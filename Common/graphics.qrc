@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>graphics/popup/bg.png</file>
+        <file>graphics/popup/btn_01.png</file>
+        <file>graphics/popup/btn_01_pressed.png</file>
+        <file>graphics/popup/btn_02.png</file>
+        <file>graphics/popup/btn_02_pressed.png</file>
+        <file>graphics/popup/btn_pressed.png</file>
+        <file>graphics/popup/img_divider.png</file>
+        <file>graphics/popup/overlay.png</file>
+    </qresource>
+</RCC>

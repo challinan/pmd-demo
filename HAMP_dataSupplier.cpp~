@@ -1,0 +1,140 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/ioctl.h>
+#include <time.h>
+#include <fcntl.h>
+#include <pthread.h>
+#include <string.h>
+
+#include "HAMP_dataSupplier.h"
+#include <iostream>
+using namespace std;
+
+int fd;
+
+HAMPDataSupplier::HAMPDataSupplier(QObject* parent): QObject(parent)
+{
+  connect(&server, SIGNAL(newConnection()),this, SLOT(acceptConnection()));
+
+  connect (this,SIGNAL(dataReceived(pm_data_struct*)),parent, SLOT(dataReceived(pm_data_struct*)));
+  connect (this,SIGNAL(connectionStatus(bool)),parent, SLOT(connectionStatus(bool)));
+
+
+  server.listen(QHostAddress::Any, SERV_PORT);
+  timer = new QTimer(this);
+  connect(timer, SIGNAL(timeout()), this, SLOT(updateTimer()));
+
+  /*
+   * set the path with name and fromat of the image
+   */
+  m_screenShortPath=QDir::currentPath() + tr("/SnapShort.png");
+}
+
+HAMPDataSupplier::~HAMPDataSupplier()
+{
+  server.close();
+}
+
+void HAMPDataSupplier::acceptConnection()
+{
+  client = server.nextPendingConnection();
+  //printf("\n\r Connection established ");
+  connect(client, SIGNAL(readyRead()),this, SLOT(startRead()));
+  connect(client, SIGNAL(disconnected()), this, SLOT(clientDisconnected()));
+  timer->stop();
+
+  /*
+   * updated connection status information to main applicaiton, based on the
+   * connection status a messages is displayed on the screen.
+   */
+  emit connectionStatus(true);
+
+}
+
+void HAMPDataSupplier::startRead()
+{
+    int read_bytes=0;
+
+	printf("Reading data from Nucleus \r\n");
+
+read_bytes = read(fd, &pm_data,sizeof(pm_data_struct));
+
+    emit dataReceived(&pm_data);
+}
+
+void HAMPDataSupplier::clientDisconnected()
+{
+    timer->start(50);
+    pm_data.abpValue=0;
+    pm_data.ecgValue =0;
+    pm_data.plethValue=0;
+    /*
+     * updated connection status information to main applicaiton, based on the
+     * connection status a messages is displayed on the screen.
+     */
+    emit connectionStatus(false);
+}
+
+void HAMPDataSupplier::updateTimer()
+{
+    pm_data.index++;
+    emit dataReceived(&pm_data);
+}
+
+/*
+ * The function is called when the (Start)button is pressed
+ * True = Enableld or Start Nucleus
+ * False= Disable or Stop Nucleus
+ */
+
+/* Shutdown message ID */
+#define STARTUP_MSG		0xEF56A559
+#define SHUTDOWN_MSG	0xEF56A55A
+
+void HAMPDataSupplier::startStopNucleus(bool flg)
+{
+	unsigned int size;
+	int startup_msg = STARTUP_MSG;
+	int shutdown_msg = SHUTDOWN_MSG;
+	int bytes_rcvd;
+
+    	printf("\nNucleus is %s",flg==true?"started":"stopped");
+	printf("\n************This is arvind's test message ************************\n");
+
+	if(flg ==true)
+	{
+		printf("\r\nloading rpmsg user device driver\r\n");
+		system("modprobe -r virtio_rpmsg_bus");
+		system("modprobe -r omap_remoteproc");
+		system("modprobe omap_remoteproc");
+		system("modprobe rpmsg_user_dev_driver");
+		sleep(1);	
+
+		printf("\r\n Starting patient monitoring app on M4 core \r\n");
+
+		fd = open("/dev/rpmsg", O_RDWR);
+
+		if(fd < 0)
+			printf("Failed to open file \r\n");
+		/* Send start message to remote */
+		write(fd, &startup_msg , sizeof(int));
+
+	}else{
+		write(fd, &shutdown_msg , sizeof(int));
+		close(fd);
+		system("modprobe -r rpmsg_user_dev_driver");
+		system("modprobe -r virtio_rpmsg_bus");
+		system("modprobe -r omap_remoteproc");
+	}
+}
+
+
+/*
+ * return the path where the snapShort is saved.
+ */
+QString HAMPDataSupplier::getScreenShortPath()
+{
+    return m_screenShortPath;
+}

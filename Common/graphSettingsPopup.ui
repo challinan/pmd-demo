@@ -1,0 +1,642 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>GraphSettingsPopup</class>
+ <widget class="QWidget" name="GraphSettingsPopup">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>375</width>
+    <height>389</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QPushButton" name="okButton">
+   <property name="geometry">
+    <rect>
+     <x>71</x>
+     <y>311</y>
+     <width>110</width>
+     <height>70</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">* {
+        min-width: 110px;
+        max-width: 110px;
+        min-height: 70px;
+        max-height: 70px;
+        border: 0px;
+        color: #ffffff;
+}
+
+*:pressed {
+        background-image: url(:/graphics/popup/btn_pressed.png);
+}
+
+</string>
+   </property>
+   <property name="text">
+    <string>Save</string>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="msgTitle">
+   <property name="geometry">
+    <rect>
+     <x>24</x>
+     <y>19</y>
+     <width>331</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>DejaVu Sans</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: #ffffff;</string>
+   </property>
+   <property name="text">
+    <string>HR Menu</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="cancelButton">
+   <property name="geometry">
+    <rect>
+     <x>193</x>
+     <y>311</y>
+     <width>110</width>
+     <height>70</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">* {
+        min-width: 110px;
+        max-width: 110px;
+        min-height: 70px;
+        max-height: 70px;
+        border: 0px;
+        color: #ffffff;
+}
+
+*:pressed {
+        background-image: url(:/graphics/popup/btn_pressed.png);
+}
+
+</string>
+   </property>
+   <property name="text">
+    <string>Cancel</string>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bg">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>375</width>
+     <height>389</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="graphics.qrc">:/graphics/popup/bg.png</pixmap>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lbwavetext">
+   <property name="geometry">
+    <rect>
+     <x>14</x>
+     <y>62</y>
+     <width>101</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: #ffffff;</string>
+   </property>
+   <property name="text">
+    <string>Wave size :</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lbwavesize">
+   <property name="geometry">
+    <rect>
+     <x>116</x>
+     <y>63</y>
+     <width>31</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: #ffffff;</string>
+   </property>
+   <property name="text">
+    <string>1</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lbseperator">
+   <property name="geometry">
+    <rect>
+     <x>7</x>
+     <y>159</y>
+     <width>359</width>
+     <height>1</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="graphics.qrc">:/graphics/popup/img_divider.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lbwavetext_2">
+   <property name="geometry">
+    <rect>
+     <x>14</x>
+     <y>160</y>
+     <width>171</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: #ffffff;</string>
+   </property>
+   <property name="text">
+    <string>Change Wave</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="gridLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>46</x>
+     <y>187</y>
+     <width>281</width>
+     <height>121</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <property name="horizontalSpacing">
+     <number>7</number>
+    </property>
+    <property name="verticalSpacing">
+     <number>4</number>
+    </property>
+    <item row="0" column="0">
+     <widget class="QPushButton" name="pbtn_wave_co2">
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">* {
+        min-width: 106px;
+        max-width: 106px;
+        min-height: 50px;
+        max-height: 50px;
+        border: 0px;
+        color: #ffffff;
+        background-image: url(:/graphics/popup/btn_02.png);
+	    text-align: center;
+		
+}
+*:checked{
+  background-image: url(:/graphics/popup/btn_02_pressed.png);
+}
+
+*:pressed {
+        background-image: url(:/graphics/popup/btn_02_pressed.png);
+}</string>
+      </property>
+      <property name="text">
+       <string>CO2</string>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>106</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+      <attribute name="buttonGroup">
+       <string notr="true">buttonGroup</string>
+      </attribute>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QPushButton" name="pbtn_wave_ecg">
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">* {
+        min-width: 106px;
+        max-width: 106px;
+        min-height: 50px;
+        max-height: 50px;
+        border: 0px;
+        color: #ffffff;
+        background-image: url(:/graphics/popup/btn_02.png);
+	    text-align: center;
+		
+}
+*:checked{
+  background-image: url(:/graphics/popup/btn_02_pressed.png);
+}
+*:pressed {
+        background-image: url(:/graphics/popup/btn_02_pressed.png);
+}</string>
+      </property>
+      <property name="text">
+       <string>ECG</string>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>106</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+      <attribute name="buttonGroup">
+       <string notr="true">buttonGroup</string>
+      </attribute>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QPushButton" name="pbtn_wave_abp">
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">* {
+        min-width: 106px;
+        max-width: 106px;
+        min-height: 50px;
+        max-height: 50px;
+        border: 0px;
+        color: #ffffff;
+        background-image: url(:/graphics/popup/btn_02.png);
+	    text-align: center;
+		
+}
+*:checked{
+  background-image: url(:/graphics/popup/btn_02_pressed.png);
+}
+
+*:pressed {
+        background-image: url(:/graphics/popup/btn_02_pressed.png);
+}
+
+</string>
+      </property>
+      <property name="text">
+       <string>ABP</string>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>106</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+      <attribute name="buttonGroup">
+       <string notr="true">buttonGroup</string>
+      </attribute>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QPushButton" name="pbtn_wave_pleth">
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">* {
+        min-width: 106px;
+        max-width: 106px;
+        min-height: 50px;
+        max-height: 50px;
+        border: 0px;
+        color: #ffffff;
+        background-image: url(:/graphics/popup/btn_02.png);
+	    text-align: center;
+		
+}
+*:checked{
+  background-image: url(:/graphics/popup/btn_02_pressed.png);
+}
+*:pressed {
+        background-image: url(:/graphics/popup/btn_02_pressed.png);
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Pleth</string>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>106</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+      <attribute name="buttonGroup">
+       <string notr="true">buttonGroup</string>
+      </attribute>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>8</x>
+     <y>100</y>
+     <width>361</width>
+     <height>52</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QPushButton" name="pbtn_SizeMinus">
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>34</pointsize>
+       </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">* {
+        min-width: 78px;
+        max-width: 78px;
+        min-height: 50px;
+        max-height: 50px;
+        border: 0px;
+        color: #ffffff;
+        background-image: url(:/graphics/popup/btn_01.png);
+	    text-align: bottom;
+		
+}
+
+*:pressed {
+        background-image: url(:/graphics/popup/btn_01_pressed.png);
+}
+
+</string>
+      </property>
+      <property name="text">
+       <string>-</string>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>78</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pbtn_SizeAuto">
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">* {
+        min-width: 78px;
+        max-width: 78px;
+        min-height: 50px;
+        max-height: 50px;
+        border: 0px;
+        color: #ffffff;
+        background-image: url(:/graphics/popup/btn_01.png);
+	    text-align: center;
+		
+}
+
+*:pressed {
+        background-image: url(:/graphics/popup/btn_01_pressed.png);
+}
+
+</string>
+      </property>
+      <property name="text">
+       <string>Auto</string>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>78</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pbtn_SizePlus">
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>31</pointsize>
+       </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">* {
+        min-width: 78px;
+        max-width: 78px;
+        min-height: 50px;
+        max-height: 50px;
+        border: 0px;
+        color: #ffffff;
+        background-image: url(:/graphics/popup/btn_01.png);
+	    text-align: center;
+		
+}
+
+*:pressed {
+        background-image: url(:/graphics/popup/btn_01_pressed.png);
+}
+
+</string>
+      </property>
+      <property name="text">
+       <string>+</string>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>78</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
+   <zorder>pbtn_SizeAuto</zorder>
+   <zorder>pbtn_SizeMinus</zorder>
+   <zorder>pbtn_SizePlus</zorder>
+  </widget>
+  <zorder>bg</zorder>
+  <zorder>okButton</zorder>
+  <zorder>msgTitle</zorder>
+  <zorder>cancelButton</zorder>
+  <zorder>lbwavetext</zorder>
+  <zorder>lbwavesize</zorder>
+  <zorder>lbseperator</zorder>
+  <zorder>lbwavetext_2</zorder>
+  <zorder>gridLayoutWidget</zorder>
+  <zorder>layoutWidget</zorder>
+ </widget>
+ <resources>
+  <include location="graphics.qrc"/>
+ </resources>
+ <connections/>
+ <buttongroups>
+  <buttongroup name="buttonGroup"/>
+ </buttongroups>
+</ui>
