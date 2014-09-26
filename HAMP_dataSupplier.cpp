@@ -14,10 +14,13 @@ int fd;
 
 HAMPDataSupplier::HAMPDataSupplier(QObject* parent): QObject(parent)
 {
-     ecgIndex =-1;
-     abpIndex =-1;
-     plethIndex=-1;
-     pm_data.index=0;
+    ecgData <<0<<0<<0<<0<<-11<<-9<<-8<<-4<<0<<-1<<3<<7<<8<<12<<13<<12<<7<<5<<-3<<-7<<-12<<-13<<-16<<-12<<-13<<-13<<-13<<-14<<-14<<-12<<-13<<-13<<-13<<-14<<-15<<-16<<-16<<-17<<-14<<-15<<-8<<-17<<-16<<1<<44<<72<<96<<80<<31<<-11<<-16<<-13<<-12<<-13<<-15<<-16<<-17<<-19<<-17<<-16<<-16<<-15<<-14<<-13<<-14;
+    abpData <<-7 << -1 <<11 <<24 <<35 <<46 <<55 <<63 <<72 <<79 <<85 << 92 << 98 <<102 <<102 <<103<<103 <<102 <<101 << 97 << 93 << 88 <<83 <<78 <<75 <<66 <<63 <<63 <<63 <<64 <<66 <<67 << 68 <<68<<67 << 64 << 58 <<50 <<49 <<42 <<38 <<33 <<29 <<26 << 24 << 22 << 20 <<18 <<16 <<14 <<13 <<11 <<10<<9 <<7 <<6 << 5 <<3 <<2 <<1 << 0 <<-1 <<-1 <<-2 <<-2 <<-2 <<-3 <<-3 <<-3 <<-4 <<-4 << -4<<-5 <<-5 <<-5 <<-6 <<-6 <<-6 << -6 << -6 <<-7 <<-7 << -7 <<-7<<-5<<-5;
+    plethData <<-7 << -1 <<11 <<24 <<35 <<40 <<46 <<50 <<55 <<58 <<63 <<72 <<74 << 74 << 76<<78 <<80 << 81 << 81 <<81 <<80 <<80<<80 <<79 <<79 << 78 << 76 << 74 << 70 <<66 <<63 <<63 <<63 <<64 <<66 <<67 << 68 <<68<<67 << 64 << 58 <<50 <<49 <<42 <<38 <<33 <<29 <<26 << 24 << 22 << 20 <<18 <<16 <<14 <<13 <<11 <<10<<9 <<7 <<6 << 5 <<3 <<2 <<1 << 0 <<-1 <<-1 <<-2 <<-2 <<-2 <<-3 <<-3 <<-3 <<-4 <<-4 << -4<<-5 <<-5 <<-5 <<-6 <<-6 <<-6 << -6 << -6 <<-7 <<-7 << -7 <<-7<<-8<<-9<<-9;
+    ecgIndex =-1;
+    abpIndex =-1;
+    plethIndex=-1;
+    pm_data.index=0;
 
      connect (this,SIGNAL(dataReceived(pm_data_struct*)),parent, SLOT(dataReceived(pm_data_struct*)));
      connect (this,SIGNAL(connectionStatus(bool)),
@@ -44,84 +47,73 @@ HAMPDataSupplier::~HAMPDataSupplier()
 
 void HAMPDataSupplier::updateData()
 {
-    int read_bytes=0;
+    if (pm_data.index == USHRT_MAX)
+    {
+       pm_data.index=0;
+    }
+    else
+    {
+        pm_data.index++;
+    }
 
-	read_bytes = read(fd, &pm_data,sizeof(pm_data_struct));
+    pm_data.ecgValue = getECGData();
+    pm_data.abpValue = getABPData();
+    pm_data.plethValue = getPlethData();
 
     emit dataReceived(&pm_data);
 }
 
-/* Shutdown message ID */
-#define STARTUP_MSG		0xEF56A559
-#define SHUTDOWN_MSG	0xEF56A55A
-
 void HAMPDataSupplier::startStopNucleus(bool flg)
 {
-	unsigned int size;
-	int startup_msg = STARTUP_MSG;
-	int shutdown_msg = SHUTDOWN_MSG;
-	int bytes_rcvd;
-	int i=0;
-
-    printf("\nNucleus is %s",flg==true?"started":"stopped");
 
 	if(flg ==true)
 	{
-		/*system("modprobe -r virtio_rpmsg_bus");
-		system("modprobe -r zynq_rpmsg_driver");
-		printf("\nLoading zynq rpmsg driver");
-		system("modprobe zynq_rpmsg_driver");*/
-
-		printf("\nLoading rpmsg user device driver");
-		system("modprobe rpmsg_user_dev_driver");
-
-		printf("\nStarting patient monitoring app on core 0\n");
-
-		do
-		{
-			printf("\nSend start msg to remote");
-			fd = open("/dev/rpmsg", O_RDWR);
-			i++;
-			if (1 > 100000)
-				break;
-		} while(fd < 0);
-
-		if(fd < 0)
-			printf("Failed to open file \r\n");
-
-		/* Send start message to remote */
-		printf("\nSend start msg to remote");
-		write(fd, &startup_msg , sizeof(int));
 		disTimer->stop();
 		timer->start();
  	    emit connectionStatus(true);
-
-
 	}
 	else
 	{
-		printf("\nSend stop msg to remote");
 		timer->stop();
-		write(fd, &shutdown_msg , sizeof(int));
-		close(fd);
 	    disTimer->start(50);
 	    pm_data.abpValue=0;
 	    pm_data.ecgValue =0;
 	    pm_data.plethValue=0;
 	    emit connectionStatus(false);
-//		printf("\nUnload rpmsg_user_device driver, virtio_rpmsg_bus driver, zynq_rpmsg_driver driver");
-//		system("modprobe -r rpmsg_user_dev_driver");
-//		system("modprobe -r virtio_rpmsg_bus");
-//		system("modprobe -r zynq_rpmsg_driver");
 	}
 }
-
-
 
 void HAMPDataSupplier::updateTimer()
 {
 	pm_data.index++;
     emit dataReceived(&pm_data);
+}
+
+unsigned int HAMPDataSupplier::getECGData()
+{
+    if (ecgIndex == ecgData.count()-1)
+        ecgIndex = -1;
+
+    ecgIndex++;
+    return ecgData[ecgIndex];
+}
+
+unsigned int HAMPDataSupplier::getABPData()
+{
+    if (abpIndex == abpData.count()-1)
+        abpIndex = -1;
+
+    abpIndex++;
+    return abpData[abpIndex];
+}
+
+unsigned int HAMPDataSupplier::getPlethData()
+{
+    if (plethIndex == plethData.count()-1)
+        plethIndex = -1;
+
+    plethIndex++;
+    return plethData[plethIndex];
 }
 
 QString HAMPDataSupplier::getScreenShortPath()
