@@ -17,7 +17,7 @@ void Helper::initialized(const int gW, const int gH, TGraphType gType, float gXS
 
     if (graphType == GraphECG)
     {
-       graphColor.setRgb(0,255,0);
+        graphColor.setRgb(0,255,0);
     }
     else if (graphType == GraphABP)
     {

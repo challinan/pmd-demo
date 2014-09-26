@@ -5,32 +5,32 @@ using namespace std;
 
 Server::Server(QObject* parent): QObject(parent)
 {
-  connect(&server, SIGNAL(newConnection()),
-    this, SLOT(acceptConnection()));
-  connect (this,SIGNAL(dataReceived(pm_data_struct*)),
-           parent, SLOT(dataReceived(pm_data_struct*)));
-  connect (this,SIGNAL(connectionStatus(bool)),
-           parent, SLOT(connectionStatus(bool)));
+    connect(&server, SIGNAL(newConnection()),
+            this, SLOT(acceptConnection()));
+    connect (this,SIGNAL(dataReceived(pm_data_struct*)),
+             parent, SLOT(dataReceived(pm_data_struct*)));
+    connect (this,SIGNAL(connectionStatus(bool)),
+             parent, SLOT(connectionStatus(bool)));
 
 
-  server.listen(QHostAddress::Any, SERV_PORT);
-  timer = new QTimer(this);
-  connect(timer, SIGNAL(timeout()), this, SLOT(updateTimer()));
+    server.listen(QHostAddress::Any, SERV_PORT);
+    timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(updateTimer()));
 }
 
 Server::~Server()
 {
-  server.close();
+    server.close();
 }
 
 void Server::acceptConnection()
 {
-  client = server.nextPendingConnection();
- // printf("\n\r Connection established ");
-  connect(client, SIGNAL(readyRead()), this, SLOT(startRead()));
-  connect(client, SIGNAL(disconnected()),this, SLOT(clientDisconnected()));
-  timer->stop();
-  emit connectionStatus(true);
+    client = server.nextPendingConnection();
+    // printf("\n\r Connection established ");
+    connect(client, SIGNAL(readyRead()), this, SLOT(startRead()));
+    connect(client, SIGNAL(disconnected()),this, SLOT(clientDisconnected()));
+    timer->stop();
+    emit connectionStatus(true);
 
 }
 
@@ -42,15 +42,15 @@ void Server::startRead()
 
     if(read_bytes < 0)
     {
-      //perror("\n\r read error readbytes =0");
-      client->close();
+        //perror("\n\r read error readbytes =0");
+        client->close();
 
-      return;
+        return;
     }
     else if(read_bytes == 0)
     {
-      //printf("\n\r No data received");
-      client->close();
+        //printf("\n\r No data received");
+        client->close();
     }
     else
     {

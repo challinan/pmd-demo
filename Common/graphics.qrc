@@ -1,12 +1,19 @@
 <RCC>
     <qresource prefix="/">
-        <file>graphics/popup/bg.png</file>
-        <file>graphics/popup/btn_01.png</file>
-        <file>graphics/popup/btn_01_pressed.png</file>
-        <file>graphics/popup/btn_02.png</file>
-        <file>graphics/popup/btn_02_pressed.png</file>
-        <file>graphics/popup/btn_pressed.png</file>
-        <file>graphics/popup/img_divider.png</file>
-        <file>graphics/popup/overlay.png</file>
+        <file>graphics/empopup/bg.png</file>
+        <file>graphics/empopup/buttononPress.png</file>
+        <file>graphics/empopup/img_divider.png</file>
+        <file>graphics/empopup/sliderOff.png</file>
+        <file>graphics/empopup/sliderOn.png</file>
+        <file>graphics/graphpopup/bg.png</file>
+        <file>graphics/graphpopup/btn_01.png</file>
+        <file>graphics/graphpopup/btn_01_pressed.png</file>
+        <file>graphics/graphpopup/btn_02.png</file>
+        <file>graphics/graphpopup/btn_02_pressed.png</file>
+        <file>graphics/graphpopup/btn_pressed.png</file>
+        <file>graphics/graphpopup/img_divider.png</file>
+        <file>graphics/empopup/sliderOffdisabled.png</file>
+        <file>graphics/graphpopup/btn_01_disable.png</file>
+        <file>graphics/graphpopup/btn_02_disable.png</file>
     </qresource>
 </RCC>

@@ -3,7 +3,7 @@
 #include "data.h"
 
 namespace Ui {
-    class GraphSettingsPopup;
+class GraphSettingsPopup;
 }
 
 class MainWindow;

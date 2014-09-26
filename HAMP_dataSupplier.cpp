@@ -1,121 +1,105 @@
+
 #include "HAMP_dataSupplier.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <sys/ioctl.h>
-#include <time.h>
-#include <fcntl.h>
-#include <pthread.h>
-#include <string.h>
-
+#include <iostream>
 using namespace std;
-
-int fd;
 
 HAMPDataSupplier::HAMPDataSupplier(QObject* parent): QObject(parent)
 {
-    ecgData <<0<<0<<0<<0<<-11<<-9<<-8<<-4<<0<<-1<<3<<7<<8<<12<<13<<12<<7<<5<<-3<<-7<<-12<<-13<<-16<<-12<<-13<<-13<<-13<<-14<<-14<<-12<<-13<<-13<<-13<<-14<<-15<<-16<<-16<<-17<<-14<<-15<<-8<<-17<<-16<<1<<44<<72<<96<<80<<31<<-11<<-16<<-13<<-12<<-13<<-15<<-16<<-17<<-19<<-17<<-16<<-16<<-15<<-14<<-13<<-14;
-    abpData <<-7 << -1 <<11 <<24 <<35 <<46 <<55 <<63 <<72 <<79 <<85 << 92 << 98 <<102 <<102 <<103<<103 <<102 <<101 << 97 << 93 << 88 <<83 <<78 <<75 <<66 <<63 <<63 <<63 <<64 <<66 <<67 << 68 <<68<<67 << 64 << 58 <<50 <<49 <<42 <<38 <<33 <<29 <<26 << 24 << 22 << 20 <<18 <<16 <<14 <<13 <<11 <<10<<9 <<7 <<6 << 5 <<3 <<2 <<1 << 0 <<-1 <<-1 <<-2 <<-2 <<-2 <<-3 <<-3 <<-3 <<-4 <<-4 << -4<<-5 <<-5 <<-5 <<-6 <<-6 <<-6 << -6 << -6 <<-7 <<-7 << -7 <<-7<<-5<<-5;
-    plethData <<-7 << -1 <<11 <<24 <<35 <<40 <<46 <<50 <<55 <<58 <<63 <<72 <<74 << 74 << 76<<78 <<80 << 81 << 81 <<81 <<80 <<80<<80 <<79 <<79 << 78 << 76 << 74 << 70 <<66 <<63 <<63 <<63 <<64 <<66 <<67 << 68 <<68<<67 << 64 << 58 <<50 <<49 <<42 <<38 <<33 <<29 <<26 << 24 << 22 << 20 <<18 <<16 <<14 <<13 <<11 <<10<<9 <<7 <<6 << 5 <<3 <<2 <<1 << 0 <<-1 <<-1 <<-2 <<-2 <<-2 <<-3 <<-3 <<-3 <<-4 <<-4 << -4<<-5 <<-5 <<-5 <<-6 <<-6 <<-6 << -6 << -6 <<-7 <<-7 << -7 <<-7<<-8<<-9<<-9;
-    ecgIndex =-1;
-    abpIndex =-1;
-    plethIndex=-1;
-    pm_data.index=0;
+    connect(&server, SIGNAL(newConnection()),this, SLOT(acceptConnection()));
 
-     connect (this,SIGNAL(dataReceived(pm_data_struct*)),parent, SLOT(dataReceived(pm_data_struct*)));
-     connect (this,SIGNAL(connectionStatus(bool)),
-              parent, SLOT(connectionStatus(bool)));
+    connect (this,SIGNAL(dataReceived(pm_data_struct*)),parent, SLOT(dataReceived(pm_data_struct*)));
+    connect (this,SIGNAL(connectionStatus(bool)),parent, SLOT(connectionStatus(bool)));
 
-     timer = new QTimer(this);
-     connect(timer, SIGNAL(timeout()), this, SLOT(updateData()));
-     timer->setInterval(30);
-     timer->stop();
 
-     disTimer = new QTimer(this);
-     connect(disTimer, SIGNAL(timeout()), this, SLOT(updateTimer()));
-     disTimer->setInterval(50);
-     //disTimer->stop();
-     m_screenShortPath=QDir::rootPath() + tr("guest1_rootfs/www/pages/screen-dump.png");
+    server.listen(QHostAddress::Any, SERV_PORT);
+    timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(updateTimer()));
+
+    /*
+   * set the path with name and fromat of the image
+   */
+    m_screenShortPath=QDir::currentPath() + tr("/SnapShort.png");
 }
 
 HAMPDataSupplier::~HAMPDataSupplier()
 {
-    ecgData.clear();
-    abpData.clear();
-    plethData.clear();
+    server.close();
 }
 
-void HAMPDataSupplier::updateData()
+void HAMPDataSupplier::acceptConnection()
 {
-    if (pm_data.index == USHRT_MAX)
+    client = server.nextPendingConnection();
+    //printf("\n\r Connection established ");
+    connect(client, SIGNAL(readyRead()),this, SLOT(startRead()));
+    connect(client, SIGNAL(disconnected()), this, SLOT(clientDisconnected()));
+    timer->stop();
+
+    /*
+   * updated connection status information to main applicaiton, based on the
+   * connection status a messages is displayed on the screen.
+   */
+    emit connectionStatus(true);
+
+}
+
+void HAMPDataSupplier::startRead()
+{
+    //pm_data_struct pm_data = {0, -500, -500, -500};
+    int read_bytes=0;
+    read_bytes = client->read((char*)&pm_data,sizeof(pm_data_struct));
+
+    if(read_bytes < 0)
     {
-       pm_data.index=0;
+        client->close();
+
+        return;
+    }
+    else if(read_bytes == 0)
+    {
+        client->close();
     }
     else
     {
-        pm_data.index++;
+        //printf("Data received = %u : %d : %d : %d. Data length = %d bytes\n", pm_data.index, pm_data.ecg, pm_data.abp, pm_data.pleth, read_bytes);
+        /*
+         * send data values to the main application.
+         */
+        emit dataReceived(&pm_data);
     }
-
-    pm_data.ecgValue = getECGData();
-    pm_data.abpValue = getABPData();
-    pm_data.plethValue = getPlethData();
-
-    emit dataReceived(&pm_data);
 }
 
-void HAMPDataSupplier::startStopNucleus(bool flg)
+void HAMPDataSupplier::clientDisconnected()
 {
-
-	if(flg ==true)
-	{
-		disTimer->stop();
-		timer->start();
- 	    emit connectionStatus(true);
-	}
-	else
-	{
-		timer->stop();
-	    disTimer->start(50);
-	    pm_data.abpValue=0;
-	    pm_data.ecgValue =0;
-	    pm_data.plethValue=0;
-	    emit connectionStatus(false);
-	}
+    timer->start(50);
+    pm_data.abpValue=0;
+    pm_data.ecgValue =0;
+    pm_data.plethValue=0;
+    /*
+     * updated connection status information to main applicaiton, based on the
+     * connection status a messages is displayed on the screen.
+     */
+    emit connectionStatus(false);
 }
 
 void HAMPDataSupplier::updateTimer()
 {
-	pm_data.index++;
+    pm_data.index++;
     emit dataReceived(&pm_data);
 }
 
-unsigned int HAMPDataSupplier::getECGData()
+/*
+ * The function is called when the (Start)button is pressed
+ * True = Enableld or Start Nucleus
+ * False= Disable or Stop Nucleus
+ */
+void HAMPDataSupplier::startStopNucleus(bool flg)
 {
-    if (ecgIndex == ecgData.count()-1)
-        ecgIndex = -1;
-
-    ecgIndex++;
-    return ecgData[ecgIndex];
+    printf("\nNucleus is %s",flg==true?"started":"stopped");
 }
 
-unsigned int HAMPDataSupplier::getABPData()
-{
-    if (abpIndex == abpData.count()-1)
-        abpIndex = -1;
-
-    abpIndex++;
-    return abpData[abpIndex];
-}
-
-unsigned int HAMPDataSupplier::getPlethData()
-{
-    if (plethIndex == plethData.count()-1)
-        plethIndex = -1;
-
-    plethIndex++;
-    return plethData[plethIndex];
-}
-
+/*
+ * return the path where the snapShort is saved.
+ */
 QString HAMPDataSupplier::getScreenShortPath()
 {
     return m_screenShortPath;

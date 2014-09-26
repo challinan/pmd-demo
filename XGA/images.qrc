@@ -1,11 +1,14 @@
 <RCC>
     <qresource prefix="/">
-        <file>images/bg.png</file>
         <file>images/btn_pressed.png</file>
         <file>images/grid.png</file>
         <file>images/icnBell.png</file>
         <file>images/icnBellMute.png</file>
         <file>images/icnBellRed.png</file>
         <file>images/statusBullet.png</file>
+        <file>images/graphMenuButton.png</file>
+        <file>images/graphMenuButtonTouch.png</file>
+        <file>images/icnBellDisable.png</file>
+        <file>images/bg-opensans.png</file>
     </qresource>
 </RCC>

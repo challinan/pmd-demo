@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1280</width>
-    <height>1024</height>
+    <width>1024</width>
+    <height>768</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -18,15 +18,160 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>1280</width>
-    <height>1024</height>
+    <width>1024</width>
+    <height>768</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>1280</width>
-    <height>1024</height>
+    <width>1024</width>
+    <height>768</height>
    </size>
+  </property>
+  <property name="palette">
+   <palette>
+    <active>
+     <colorrole role="WindowText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Text">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="ButtonText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Shadow">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>105</red>
+        <green>105</green>
+        <blue>105</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </active>
+    <inactive>
+     <colorrole role="WindowText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Text">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="ButtonText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Shadow">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>105</red>
+        <green>105</green>
+        <blue>105</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </inactive>
+    <disabled>
+     <colorrole role="WindowText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Text">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="ButtonText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Shadow">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>106</red>
+        <green>106</green>
+        <blue>106</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </disabled>
+   </palette>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -53,10 +198,10 @@
    <widget class="QLabel" name="labelTime">
     <property name="geometry">
      <rect>
-      <x>360</x>
-      <y>10</y>
-      <width>141</width>
-      <height>21</height>
+      <x>350</x>
+      <y>9</y>
+      <width>140</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="palette">
@@ -65,27 +210,27 @@
        <colorrole role="WindowText">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>191</red>
-          <green>191</green>
-          <blue>180</blue>
+          <red>220</red>
+          <green>220</green>
+          <blue>210</blue>
          </color>
         </brush>
        </colorrole>
        <colorrole role="Text">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>191</red>
-          <green>191</green>
-          <blue>180</blue>
+          <red>220</red>
+          <green>220</green>
+          <blue>210</blue>
          </color>
         </brush>
        </colorrole>
        <colorrole role="ButtonText">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>191</red>
-          <green>191</green>
-          <blue>180</blue>
+          <red>220</red>
+          <green>220</green>
+          <blue>210</blue>
          </color>
         </brush>
        </colorrole>
@@ -94,27 +239,27 @@
        <colorrole role="WindowText">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>191</red>
-          <green>191</green>
-          <blue>180</blue>
+          <red>220</red>
+          <green>220</green>
+          <blue>210</blue>
          </color>
         </brush>
        </colorrole>
        <colorrole role="Text">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>191</red>
-          <green>191</green>
-          <blue>180</blue>
+          <red>220</red>
+          <green>220</green>
+          <blue>210</blue>
          </color>
         </brush>
        </colorrole>
        <colorrole role="ButtonText">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>191</red>
-          <green>191</green>
-          <blue>180</blue>
+          <red>220</red>
+          <green>220</green>
+          <blue>210</blue>
          </color>
         </brush>
        </colorrole>
@@ -123,27 +268,27 @@
        <colorrole role="WindowText">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>191</red>
-          <green>191</green>
-          <blue>180</blue>
+          <red>220</red>
+          <green>220</green>
+          <blue>210</blue>
          </color>
         </brush>
        </colorrole>
        <colorrole role="Text">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>191</red>
-          <green>191</green>
-          <blue>180</blue>
+          <red>220</red>
+          <green>220</green>
+          <blue>210</blue>
          </color>
         </brush>
        </colorrole>
        <colorrole role="ButtonText">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>191</red>
-          <green>191</green>
-          <blue>180</blue>
+          <red>220</red>
+          <green>220</green>
+          <blue>210</blue>
          </color>
         </brush>
        </colorrole>
@@ -152,8 +297,10 @@
     </property>
     <property name="font">
      <font>
-      <family>Arial</family>
-      <pointsize>10</pointsize>
+      <family>Open Sans</family>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
       <stylestrategy>PreferAntialias</stylestrategy>
      </font>
     </property>
@@ -161,10 +308,10 @@
      <enum>Qt::NoFocus</enum>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(191, 191, 180);</string>
+     <string notr="true">color: rgb(220, 220, 210);</string>
     </property>
     <property name="text">
-     <string>Feb 26 2014</string>
+     <string>12:00 AM</string>
     </property>
    </widget>
    <widget class="QLabel" name="labelBG">
@@ -198,7 +345,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="images.qrc">:/images/bg.png</pixmap>
+     <pixmap resource="images.qrc">:/images/bg-opensans.png</pixmap>
     </property>
    </widget>
    <widget class="QWidget" name="graphECGWidget" native="true">
@@ -248,16 +395,16 @@
    <widget class="QLabel" name="labelABP">
     <property name="geometry">
      <rect>
-      <x>788</x>
-      <y>224</y>
-      <width>191</width>
-      <height>51</height>
+      <x>790</x>
+      <y>220</y>
+      <width>201</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Arial</family>
-      <pointsize>36</pointsize>
+      <family>Open Sans</family>
+      <pointsize>34</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -301,15 +448,15 @@
     <property name="geometry">
      <rect>
       <x>795</x>
-      <y>396</y>
+      <y>381</y>
       <width>141</width>
-      <height>91</height>
+      <height>101</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Arial</family>
-      <pointsize>54</pointsize>
+      <family>Open Sans</family>
+      <pointsize>46</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -375,7 +522,7 @@
     </property>
     <property name="font">
      <font>
-      <family>Arial</family>
+      <family>Open Sans</family>
       <pointsize>12</pointsize>
       <weight>50</weight>
       <bold>false</bold>
@@ -395,12 +542,13 @@
 
 *:checked
 { 
+ 
  background-image: url(:/images/btn_pressed.png);
 }
 </string>
     </property>
     <property name="text">
-     <string>Silent</string>
+     <string>Mute Alerts</string>
     </property>
     <property name="iconSize">
      <size>
@@ -416,94 +564,6 @@
     </property>
    </widget>
    <widget class="QPushButton" name="pbtn_StartStop">
-    <property name="geometry">
-     <rect>
-      <x>117</x>
-      <y>693</y>
-      <width>110</width>
-      <height>70</height>
-     </rect>
-    </property>
-    <property name="palette">
-     <palette>
-      <active>
-       <colorrole role="ButtonText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </active>
-      <inactive>
-       <colorrole role="ButtonText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </inactive>
-      <disabled>
-       <colorrole role="ButtonText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </disabled>
-     </palette>
-    </property>
-    <property name="font">
-     <font>
-      <family>Arial</family>
-      <pointsize>12</pointsize>
-      <weight>50</weight>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="focusPolicy">
-     <enum>Qt::NoFocus</enum>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">* {
-        min-width: 110px;
-        max-width: 110px;
-        min-height: 70px;
-        max-height: 70px;
-        border: 0px;
-}
-
-*:checked
-{ 
- background-image: url(:/images/btn_pressed.png);
-}
-</string>
-    </property>
-    <property name="text">
-     <string>Stop</string>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>110</width>
-      <height>70</height>
-     </size>
-    </property>
-    <property name="checkable">
-     <bool>true</bool>
-    </property>
-    <property name="flat">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pbtn_PauseAll">
     <property name="geometry">
      <rect>
       <x>230</x>
@@ -551,7 +611,7 @@
     </property>
     <property name="font">
      <font>
-      <family>Arial</family>
+      <family>Open Sans</family>
       <pointsize>12</pointsize>
       <weight>50</weight>
       <bold>false</bold>
@@ -576,7 +636,95 @@
 </string>
     </property>
     <property name="text">
-     <string>Pause All</string>
+     <string>Start/Stop</string>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>110</width>
+      <height>70</height>
+     </size>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pbtn_PauseAll">
+    <property name="geometry">
+     <rect>
+      <x>117</x>
+      <y>693</y>
+      <width>110</width>
+      <height>70</height>
+     </rect>
+    </property>
+    <property name="palette">
+     <palette>
+      <active>
+       <colorrole role="ButtonText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </active>
+      <inactive>
+       <colorrole role="ButtonText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </inactive>
+      <disabled>
+       <colorrole role="ButtonText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </disabled>
+     </palette>
+    </property>
+    <property name="font">
+     <font>
+      <family>Open Sans</family>
+      <pointsize>12</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">* {
+        min-width: 110px;
+        max-width: 110px;
+        min-height: 70px;
+        max-height: 70px;
+        border: 0px;
+}
+
+*:checked
+{ 
+ background-image: url(:/images/btn_pressed.png);
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Disable Alarms</string>
     </property>
     <property name="iconSize">
      <size>
@@ -614,14 +762,14 @@
     <property name="geometry">
      <rect>
       <x>38</x>
-      <y>656</y>
-      <width>421</width>
-      <height>21</height>
+      <y>653</y>
+      <width>800</width>
+      <height>26</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Arial</family>
+      <family>Open Sans</family>
       <pointsize>12</pointsize>
      </font>
     </property>
@@ -632,16 +780,16 @@
      <string notr="true">color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-     <string>Data System is connected</string>
+     <string>Audible alert is turned on. </string>
     </property>
    </widget>
    <widget class="QPushButton" name="pbtn_ECG_Alarm">
     <property name="geometry">
      <rect>
-      <x>995</x>
-      <y>48</y>
-      <width>22</width>
-      <height>25</height>
+      <x>984</x>
+      <y>47</y>
+      <width>34</width>
+      <height>34</height>
      </rect>
     </property>
     <property name="focusPolicy">
@@ -658,10 +806,10 @@
     </property>
     <property name="styleSheet">
      <string notr="true">* {
-        min-width: 22px;
-        max-width: 22px;
-        min-height: 25px;
-        max-height: 25px;
+        min-width: 34px;
+        max-width: 34px;
+        min-height: 34px;
+        max-height: 34px;
         border: 0px;
         background-image: url(:/images/icnBell.png);	
 }
@@ -676,12 +824,6 @@
     </property>
     <property name="text">
      <string/>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>22</width>
-      <height>25</height>
-     </size>
     </property>
     <property name="shortcut">
      <string notr="true"/>
@@ -699,10 +841,10 @@
    <widget class="QPushButton" name="pbtn_ABP_Alarm">
     <property name="geometry">
      <rect>
-      <x>995</x>
-      <y>200</y>
-      <width>22</width>
-      <height>25</height>
+      <x>984</x>
+      <y>198</y>
+      <width>34</width>
+      <height>34</height>
      </rect>
     </property>
     <property name="focusPolicy">
@@ -719,10 +861,10 @@
     </property>
     <property name="styleSheet">
      <string notr="true">* {
-        min-width: 22px;
-        max-width: 22px;
-        min-height: 25px;
-        max-height: 25px;
+       min-width: 34px;
+        max-width: 34px;
+        min-height: 34px;
+        max-height: 34px;
         border: 0px;
         background-image: url(:/images/icnBell.png);	
 }
@@ -733,12 +875,6 @@
     </property>
     <property name="text">
      <string/>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>22</width>
-      <height>25</height>
-     </size>
     </property>
     <property name="shortcut">
      <string notr="true"/>
@@ -756,10 +892,10 @@
    <widget class="QPushButton" name="pbtn_spo2_Alarm">
     <property name="geometry">
      <rect>
-      <x>995</x>
-      <y>355</y>
-      <width>22</width>
-      <height>25</height>
+      <x>983</x>
+      <y>349</y>
+      <width>34</width>
+      <height>34</height>
      </rect>
     </property>
     <property name="focusPolicy">
@@ -776,10 +912,10 @@
     </property>
     <property name="styleSheet">
      <string notr="true">* {
-        min-width: 22px;
-        max-width: 22px;
-        min-height: 25px;
-        max-height: 25px;
+       min-width: 34px;
+        max-width: 34px;
+        min-height: 34px;
+        max-height: 34px;
         border: 0px;
         background-image: url(:/images/icnBell.png);	
 }
@@ -790,12 +926,6 @@
     </property>
     <property name="text">
      <string/>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>22</width>
-      <height>25</height>
-     </size>
     </property>
     <property name="shortcut">
      <string notr="true"/>
@@ -811,12 +941,15 @@
     </property>
    </widget>
    <widget class="QLabel" name="lb_nibp_alarm">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
-      <x>720</x>
-      <y>495</y>
-      <width>22</width>
-      <height>25</height>
+      <x>707</x>
+      <y>498</y>
+      <width>34</width>
+      <height>34</height>
      </rect>
     </property>
     <property name="focusPolicy">
@@ -826,16 +959,19 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="images.qrc">:/images/icnBell.png</pixmap>
+     <pixmap resource="images.qrc">:/images/icnBellDisable.png</pixmap>
     </property>
    </widget>
    <widget class="QLabel" name="lb_temp_alarm">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
-      <x>995</x>
-      <y>497</y>
-      <width>22</width>
-      <height>25</height>
+      <x>984</x>
+      <y>498</y>
+      <width>34</width>
+      <height>34</height>
      </rect>
     </property>
     <property name="focusPolicy">
@@ -845,13 +981,13 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="images.qrc">:/images/icnBell.png</pixmap>
+     <pixmap resource="images.qrc">:/images/icnBellDisable.png</pixmap>
     </property>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>345</x>
+      <x>343</x>
       <y>716</y>
       <width>110</width>
       <height>24</height>
@@ -859,7 +995,7 @@
     </property>
     <property name="font">
      <font>
-      <family>Arial</family>
+      <family>Open Sans</family>
       <pointsize>12</pointsize>
      </font>
     </property>
@@ -867,7 +1003,7 @@
      <enum>Qt::NoFocus</enum>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
+     <string notr="true">color: rgb(128, 128, 128);</string>
     </property>
     <property name="text">
      <string>Zero All</string>
@@ -879,7 +1015,7 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>460</x>
+      <x>457</x>
       <y>716</y>
       <width>110</width>
       <height>24</height>
@@ -887,7 +1023,7 @@
     </property>
     <property name="font">
      <font>
-      <family>Arial</family>
+      <family>Open Sans</family>
       <pointsize>12</pointsize>
      </font>
     </property>
@@ -895,7 +1031,7 @@
      <enum>Qt::NoFocus</enum>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
+     <string notr="true">color: rgb(128, 128, 128);</string>
     </property>
     <property name="text">
      <string>Recordings</string>
@@ -915,7 +1051,7 @@
     </property>
     <property name="font">
      <font>
-      <family>Arial</family>
+      <family>Open Sans</family>
       <pointsize>12</pointsize>
      </font>
     </property>
@@ -923,7 +1059,7 @@
      <enum>Qt::NoFocus</enum>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
+     <string notr="true">color: rgb(128, 128, 128);</string>
     </property>
     <property name="text">
      <string>Procedure</string>
@@ -935,7 +1071,7 @@
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>797</x>
+      <x>796</x>
       <y>716</y>
       <width>110</width>
       <height>24</height>
@@ -943,7 +1079,7 @@
     </property>
     <property name="font">
      <font>
-      <family>Arial</family>
+      <family>Open Sans</family>
       <pointsize>12</pointsize>
      </font>
     </property>
@@ -951,7 +1087,7 @@
      <enum>Qt::NoFocus</enum>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
+     <string notr="true">color: rgb(128, 128, 128);</string>
     </property>
     <property name="text">
      <string>Standby</string>
@@ -963,7 +1099,7 @@
    <widget class="QLabel" name="label_6">
     <property name="geometry">
      <rect>
-      <x>910</x>
+      <x>906</x>
       <y>716</y>
       <width>110</width>
       <height>24</height>
@@ -971,7 +1107,7 @@
     </property>
     <property name="font">
      <font>
-      <family>Arial</family>
+      <family>Open Sans</family>
       <pointsize>12</pointsize>
      </font>
     </property>
@@ -979,7 +1115,7 @@
      <enum>Qt::NoFocus</enum>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
+     <string notr="true">color: rgb(128, 128, 128);</string>
     </property>
     <property name="text">
      <string>Home</string>
@@ -991,16 +1127,16 @@
    <widget class="QLabel" name="labelPulse">
     <property name="geometry">
      <rect>
-      <x>802</x>
-      <y>80</y>
+      <x>795</x>
+      <y>92</y>
       <width>131</width>
-      <height>101</height>
+      <height>91</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Arial</family>
-      <pointsize>54</pointsize>
+      <family>Open Sans</family>
+      <pointsize>46</pointsize>
       <weight>75</weight>
       <bold>true</bold>
       <strikeout>false</strikeout>
@@ -1017,7 +1153,7 @@
      <string notr="true">77</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pbtn_Scrolling">
+   <widget class="QPushButton" name="pbtn_settings">
     <property name="geometry">
      <rect>
       <x>682</x>
@@ -1065,7 +1201,7 @@
     </property>
     <property name="font">
      <font>
-      <family>Arial</family>
+      <family>Open Sans</family>
       <pointsize>12</pointsize>
       <weight>50</weight>
       <bold>false</bold>
@@ -1090,7 +1226,7 @@
 </string>
     </property>
     <property name="text">
-     <string>Scrolling</string>
+     <string>Settings</string>
     </property>
     <property name="iconSize">
      <size>
@@ -1100,6 +1236,189 @@
     </property>
     <property name="checkable">
      <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelABP_2">
+    <property name="geometry">
+     <rect>
+      <x>821</x>
+      <y>273</y>
+      <width>141</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Open Sans</family>
+      <pointsize>34</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(200, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string>(96)</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pbtn_ECG_GraphPopup">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>123</y>
+      <width>29</width>
+      <height>54</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="acceptDrops">
+     <bool>false</bool>
+    </property>
+    <property name="toolTip">
+     <string notr="true"/>
+    </property>
+    <property name="statusTip">
+     <string notr="true"/>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">* {
+       min-width: 29px;
+        max-width: 29px;
+        min-height: 54px;
+        max-height: 54px;
+        border: 0px;
+        background-image: url(:/images/graphMenuButton.png);	
+}
+*:checked{
+  background-image: url(:/images/graphMenuButtonTouch.png);
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="shortcut">
+     <string notr="true"/>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pbtn_ABP_GraphPopup">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>277</y>
+      <width>29</width>
+      <height>54</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="acceptDrops">
+     <bool>false</bool>
+    </property>
+    <property name="toolTip">
+     <string notr="true"/>
+    </property>
+    <property name="statusTip">
+     <string notr="true"/>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">* {
+       min-width: 29px;
+        max-width: 29px;
+        min-height: 54px;
+        max-height: 54px;
+        border: 0px;
+        background-image: url(:/images/graphMenuButton.png);	
+}
+*:checked{
+  background-image: url(:/images/graphMenuButtonTouch.png);
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="shortcut">
+     <string notr="true"/>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pbtn_spo2_GraphPopup">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>428</y>
+      <width>29</width>
+      <height>54</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="acceptDrops">
+     <bool>false</bool>
+    </property>
+    <property name="toolTip">
+     <string notr="true"/>
+    </property>
+    <property name="statusTip">
+     <string notr="true"/>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">* {
+         min-width: 29px;
+        max-width: 29px;
+        min-height: 54px;
+        max-height: 54px;
+        border: 0px;
+        background-image: url(:/images/graphMenuButton.png);	
+}
+*:checked{
+  background-image: url(:/images/graphMenuButtonTouch.png);
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="shortcut">
+     <string notr="true"/>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="default">
+     <bool>false</bool>
     </property>
     <property name="flat">
      <bool>true</bool>
@@ -1128,7 +1447,11 @@
    <zorder>label_5</zorder>
    <zorder>label_6</zorder>
    <zorder>labelPulse</zorder>
-   <zorder>pbtn_Scrolling</zorder>
+   <zorder>pbtn_settings</zorder>
+   <zorder>labelABP_2</zorder>
+   <zorder>pbtn_ECG_GraphPopup</zorder>
+   <zorder>pbtn_ABP_GraphPopup</zorder>
+   <zorder>pbtn_spo2_GraphPopup</zorder>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

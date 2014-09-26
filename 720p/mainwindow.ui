@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1280</width>
-    <height>720</height>
+    <height>1024</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -25,7 +25,7 @@
   <property name="maximumSize">
    <size>
     <width>1280</width>
-    <height>720</height>
+    <height>1024</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -53,8 +53,8 @@
    <widget class="QLabel" name="labelTime">
     <property name="geometry">
      <rect>
-      <x>396</x>
-      <y>11</y>
+      <x>395</x>
+      <y>9</y>
       <width>141</width>
       <height>21</height>
      </rect>
@@ -65,27 +65,27 @@
        <colorrole role="WindowText">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>191</red>
-          <green>191</green>
-          <blue>180</blue>
+          <red>210</red>
+          <green>210</green>
+          <blue>200</blue>
          </color>
         </brush>
        </colorrole>
        <colorrole role="Text">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>191</red>
-          <green>191</green>
-          <blue>180</blue>
+          <red>210</red>
+          <green>210</green>
+          <blue>200</blue>
          </color>
         </brush>
        </colorrole>
        <colorrole role="ButtonText">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>191</red>
-          <green>191</green>
-          <blue>180</blue>
+          <red>210</red>
+          <green>210</green>
+          <blue>200</blue>
          </color>
         </brush>
        </colorrole>
@@ -94,27 +94,27 @@
        <colorrole role="WindowText">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>191</red>
-          <green>191</green>
-          <blue>180</blue>
+          <red>210</red>
+          <green>210</green>
+          <blue>200</blue>
          </color>
         </brush>
        </colorrole>
        <colorrole role="Text">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>191</red>
-          <green>191</green>
-          <blue>180</blue>
+          <red>210</red>
+          <green>210</green>
+          <blue>200</blue>
          </color>
         </brush>
        </colorrole>
        <colorrole role="ButtonText">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>191</red>
-          <green>191</green>
-          <blue>180</blue>
+          <red>210</red>
+          <green>210</green>
+          <blue>200</blue>
          </color>
         </brush>
        </colorrole>
@@ -123,27 +123,27 @@
        <colorrole role="WindowText">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>191</red>
-          <green>191</green>
-          <blue>180</blue>
+          <red>210</red>
+          <green>210</green>
+          <blue>200</blue>
          </color>
         </brush>
        </colorrole>
        <colorrole role="Text">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>191</red>
-          <green>191</green>
-          <blue>180</blue>
+          <red>210</red>
+          <green>210</green>
+          <blue>200</blue>
          </color>
         </brush>
        </colorrole>
        <colorrole role="ButtonText">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>191</red>
-          <green>191</green>
-          <blue>180</blue>
+          <red>210</red>
+          <green>210</green>
+          <blue>200</blue>
          </color>
         </brush>
        </colorrole>
@@ -153,7 +153,9 @@
     <property name="font">
      <font>
       <family>Arial</family>
-      <pointsize>11</pointsize>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
       <stylestrategy>PreferAntialias</stylestrategy>
      </font>
     </property>
@@ -161,7 +163,7 @@
      <enum>Qt::NoFocus</enum>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(191, 191, 180);</string>
+     <string notr="true">color: rgb(210, 210, 200);</string>
     </property>
     <property name="text">
      <string>Feb 26 2014</string>
@@ -229,8 +231,8 @@
    <widget class="QLabel" name="labelPulse">
     <property name="geometry">
      <rect>
-      <x>990</x>
-      <y>60</y>
+      <x>980</x>
+      <y>70</y>
       <width>131</width>
       <height>101</height>
      </rect>
@@ -238,7 +240,7 @@
     <property name="font">
      <font>
       <family>Arial</family>
-      <pointsize>54</pointsize>
+      <pointsize>56</pointsize>
       <weight>75</weight>
       <bold>true</bold>
       <strikeout>false</strikeout>
@@ -278,7 +280,7 @@
     <property name="geometry">
      <rect>
       <x>980</x>
-      <y>220</y>
+      <y>208</y>
       <width>191</width>
       <height>51</height>
      </rect>
@@ -286,7 +288,7 @@
     <property name="font">
      <font>
       <family>Arial</family>
-      <pointsize>36</pointsize>
+      <pointsize>38</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -330,7 +332,7 @@
     <property name="geometry">
      <rect>
       <x>980</x>
-      <y>340</y>
+      <y>350</y>
       <width>141</width>
       <height>91</height>
      </rect>
@@ -338,7 +340,7 @@
     <property name="font">
      <font>
       <family>Arial</family>
-      <pointsize>50</pointsize>
+      <pointsize>56</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -429,7 +431,7 @@
 </string>
     </property>
     <property name="text">
-     <string>Silent</string>
+     <string>Mute Alerts</string>
     </property>
     <property name="iconSize">
      <size>
@@ -517,7 +519,7 @@
 </string>
     </property>
     <property name="text">
-     <string>Stop</string>
+     <string>Start/Stop</string>
     </property>
     <property name="iconSize">
      <size>
@@ -535,7 +537,7 @@
    <widget class="QPushButton" name="pbtn_PauseAll">
     <property name="geometry">
      <rect>
-      <x>309</x>
+      <x>308</x>
       <y>647</y>
       <width>130</width>
       <height>70</height>
@@ -605,7 +607,7 @@
 </string>
     </property>
     <property name="text">
-     <string>Pause All</string>
+     <string>Disable Alarms</string>
     </property>
     <property name="iconSize">
      <size>
@@ -623,7 +625,7 @@
    <widget class="QLabel" name="lbstatusBullet">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>20</x>
       <y>610</y>
       <width>21</width>
       <height>21</height>
@@ -642,7 +644,7 @@
    <widget class="QLabel" name="labelBulletText">
     <property name="geometry">
      <rect>
-      <x>80</x>
+      <x>50</x>
       <y>610</y>
       <width>421</width>
       <height>21</height>
@@ -904,7 +906,7 @@
      <enum>Qt::NoFocus</enum>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
+     <string notr="true">color: rgb(128, 128, 128);</string>
     </property>
     <property name="text">
      <string>Zero All</string>
@@ -932,7 +934,7 @@
      <enum>Qt::NoFocus</enum>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
+     <string notr="true">color: rgb(128, 128, 128);</string>
     </property>
     <property name="text">
      <string>Recordings</string>
@@ -960,7 +962,7 @@
      <enum>Qt::NoFocus</enum>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
+     <string notr="true">color: rgb(128, 128, 128);</string>
     </property>
     <property name="text">
      <string>Procedure</string>
@@ -988,7 +990,7 @@
      <enum>Qt::NoFocus</enum>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
+     <string notr="true">color: rgb(128, 128, 128);</string>
     </property>
     <property name="text">
      <string>Standby</string>
@@ -1016,7 +1018,7 @@
      <enum>Qt::NoFocus</enum>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
+     <string notr="true">color: rgb(128, 128, 128);</string>
     </property>
     <property name="text">
      <string>Home</string>
@@ -1025,7 +1027,7 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="pbtn_Scrolling">
+   <widget class="QPushButton" name="pbtn_settings">
     <property name="geometry">
      <rect>
       <x>843</x>
@@ -1098,7 +1100,7 @@
 </string>
     </property>
     <property name="text">
-     <string>Scrolling</string>
+     <string>Settings</string>
     </property>
     <property name="iconSize">
      <size>
@@ -1113,10 +1115,208 @@
      <bool>true</bool>
     </property>
    </widget>
+   <widget class="QLabel" name="labelABP_2">
+    <property name="geometry">
+     <rect>
+      <x>980</x>
+      <y>253</y>
+      <width>191</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>34</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(200, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string>(96)</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pbtn_ABP_GraphPopup">
+    <property name="geometry">
+     <rect>
+      <x>7</x>
+      <y>231</y>
+      <width>29</width>
+      <height>54</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="acceptDrops">
+     <bool>false</bool>
+    </property>
+    <property name="toolTip">
+     <string notr="true"/>
+    </property>
+    <property name="statusTip">
+     <string notr="true"/>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">* {
+       min-width: 29px;
+        max-width: 29px;
+        min-height: 54px;
+        max-height: 54px;
+        border: 0px;
+        background-image: url(:/images/graphMenuButton.png);	
+}
+*:checked{
+  background-image: url(:/images/graphMenuButtonTouch.png);
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="shortcut">
+     <string notr="true"/>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pbtn_ECG_GraphPopup">
+    <property name="geometry">
+     <rect>
+      <x>7</x>
+      <y>93</y>
+      <width>29</width>
+      <height>54</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="acceptDrops">
+     <bool>false</bool>
+    </property>
+    <property name="toolTip">
+     <string notr="true"/>
+    </property>
+    <property name="statusTip">
+     <string notr="true"/>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">* {
+       min-width: 29px;
+        max-width: 29px;
+        min-height: 54px;
+        max-height: 54px;
+        border: 0px;
+        background-image: url(:/images/graphMenuButton.png);	
+}
+*:checked{
+  background-image: url(:/images/graphMenuButtonTouch.png);
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="shortcut">
+     <string notr="true"/>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pbtn_spo2_GraphPopup">
+    <property name="geometry">
+     <rect>
+      <x>7</x>
+      <y>370</y>
+      <width>29</width>
+      <height>54</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="acceptDrops">
+     <bool>false</bool>
+    </property>
+    <property name="toolTip">
+     <string notr="true"/>
+    </property>
+    <property name="statusTip">
+     <string notr="true"/>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">* {
+         min-width: 29px;
+        max-width: 29px;
+        min-height: 54px;
+        max-height: 54px;
+        border: 0px;
+        background-image: url(:/images/graphMenuButton.png);	
+}
+*:checked{
+  background-image: url(:/images/graphMenuButtonTouch.png);
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="shortcut">
+     <string notr="true"/>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>720</y>
+      <width>1280</width>
+      <height>304</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="images.qrc">:/images/logoBack.png</pixmap>
+    </property>
+   </widget>
    <zorder>labelBG</zorder>
    <zorder>labelTime</zorder>
    <zorder>graphECGWidget</zorder>
-   <zorder>labelPulse</zorder>
    <zorder>graphABPWidget</zorder>
    <zorder>labelABP</zorder>
    <zorder>graphPLETHWidget</zorder>
@@ -1136,7 +1336,13 @@
    <zorder>label_3</zorder>
    <zorder>label_5</zorder>
    <zorder>label_6</zorder>
-   <zorder>pbtn_Scrolling</zorder>
+   <zorder>labelPulse</zorder>
+   <zorder>pbtn_settings</zorder>
+   <zorder>labelABP_2</zorder>
+   <zorder>pbtn_ABP_GraphPopup</zorder>
+   <zorder>pbtn_ECG_GraphPopup</zorder>
+   <zorder>pbtn_spo2_GraphPopup</zorder>
+   <zorder>label_4</zorder>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

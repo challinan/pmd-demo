@@ -21,6 +21,7 @@ public:
     void clearWidget();
     bool clearGraph(QPainter *painterWidget);
     void setScrollingMode(bool bValue);
+    bool getScrollingMode(){return m_scrollEnable;}
     void updateOffScreen(QRect dirtyRect);
 
 public slots:

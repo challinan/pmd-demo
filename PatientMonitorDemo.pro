@@ -17,7 +17,6 @@ MOC_DIR     = $$DESTDIR/.moc
 RCC_DIR     = $$DESTDIR/.qrc
 UI_DIR      = $$DESTDIR/.ui
 
-
 ##########################################
 #
 # Demo Configurations:
@@ -29,7 +28,7 @@ UI_DIR      = $$DESTDIR/.ui
 #       PMD_NUCLEUS
 #       PMD_MEHV
 #       PMD_HAMP
-DEFINES += PMD_HAMP
+DEFINES += PMD_NUCLEUS
 
 #   - The demo can be used with one of the design size
 #       DESIGN_SIZE_XGA
@@ -56,23 +55,27 @@ contains(DEFINES,PMD_MEHV|PMD_HAMP) {
     QT += network
 }
 
-
 SOURCES +=  main.cpp\
             mainwindow.cpp \
             widget.cpp \
             helper.cpp \
             graphSettingsPopup.cpp \
-
-
+            engMenuPopup.cpp \
 
 HEADERS  += mainwindow.h \
             widget.h \
             helper.h \
             graphSettingsPopup.h \
             data.h \
+            engMenuPopup.h \
 
-FORMS   +=  Common/graphSettingsPopup.ui
-RESOURCES += Common/graphics.qrc
+
+FORMS   +=  Common/graphSettingsPopup.ui \
+    Common/engMenuPopup.ui \
+    #XGA/dialog.ui
+
+RESOURCES = Common/graphics.qrc \
+
 
 contains(DEFINES, PMD_MEHV) {
     SOURCES     +=  MEHV_dataSupplier.cpp
@@ -93,12 +96,6 @@ contains(DEFINES, PMD_HAMP) {
     HEADERS     +=  HAMP_dataSupplier.h
 }
 
-
-contains(DEFINES, DESIGN_SIZE_XGA) {
-  #  FORMS       += XGA/mainwindow.ui
-  #  RESOURCES   += XGA/images.qrc
-}
-
 contains(DEFINES, DESIGN_SIZE_720p) {
     FORMS       += 720p/mainwindow.ui
     RESOURCES   += 720p/images.qrc
@@ -108,10 +105,11 @@ contains(DEFINES, DESIGN_SIZE_720p) {
     }
 }
 
-contains(DEFINES, PMD_HAMP) {
-
-target.path=$$[QT_INSTALL_EXAMPLES]/HAMPDemo/PatientMonitorDemo
-INSTALLS +=target
+contains(DEFINES, DESIGN_SIZE_XGA) {
+   #FORMS       += XGA/mainwindow.ui
+    #RESOURCES   += XGA/images.qrc
 }
-
-
+contains(DEFINES, PMD_HAMP) {
+    target.path=$$[QT_INSTALL_EXAMPLES]/HAMPDemo/PatientMonitorDemo
+    INSTALLS +=target
+}

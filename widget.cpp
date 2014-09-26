@@ -13,7 +13,7 @@ Widget::Widget(QWidget *parent, QWidget *mainWindow) : QWidget(parent)
     setFixedSize(parent->width(), parent->height());
 
     // Setup signals/slots
-    connect(this, SIGNAL(mouseClickEvent(Widget * )), mainWindow, SLOT(launchGraphMenuPopup(Widget *)));
+    //connect(this, SIGNAL(mouseClickEvent(Widget * )), mainWindow, SLOT(launchGraphMenuPopup(Widget *)));
 
     // Setup graph renderer
     m_image = new QImage(size(), QImage::Format_RGB32);
@@ -75,7 +75,8 @@ void Widget::updateOffScreen(QRect dirtyRect)
 
     // Draw new graph line
     m_helper.paintGraph(m_imagePainter);
-    m_imagePainter->end();
+    //m_imagePainter->end(dirtyRect);
+   m_imagePainter->end();
 }
 
 void Widget::paintEvent(QPaintEvent *event)
@@ -111,7 +112,7 @@ void Widget::paintEvent(QPaintEvent *event)
         {
             //Limit the drawing to the updated part
             //this needs to be checked on hardware for the cost/performance as the painteEvent have the dirty rect set
-            //what happen if we draw all the image inseatd of its dirty portion ???
+            //what happen if we draw all the image instead of its dirty portion ???
            QRect r=event->rect();
            painter.drawImage(r.x(), r.y(), *m_image,r.x(),r.y(),r.width(),r.height());
         }
@@ -131,12 +132,14 @@ void Widget::mousePressEvent(QMouseEvent *e)
 
 void Widget::mouseReleaseEvent(QMouseEvent *e)
 {
+    // suppress compiler warning
+    (void)e;
     // check if cursor is inside the widget boundary
-    if ((m_mouseClick) && (this->rect().contains(e->pos())))
+    /*if ((m_mouseClick) && (this->rect().contains(e->pos())))
     {
         // emit Click signal to Mainwindow to lauch the popup
         emit mouseClickEvent(this);
-    }
+    }*/
 }
 
 void Widget::clearWidget()
@@ -180,6 +183,7 @@ void Widget::setScrollingMode(bool bValue)
     m_imagePainter->begin(m_image);
     m_imagePainter->setRenderHint(QPainter::Antialiasing);
     clearGraph(m_imagePainter);
+    //m_imagePainter->end(dirtyRect);
     m_imagePainter->end();
 
     // full graph refresh to get the background

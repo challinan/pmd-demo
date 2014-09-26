@@ -25,7 +25,7 @@ public:
 public slots:
     void updateData();
 
-  signals:
+signals:
     void dataReceived(pm_data_struct *);
 
 private:
