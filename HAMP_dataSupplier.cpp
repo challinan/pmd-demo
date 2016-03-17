@@ -88,7 +88,7 @@ void HAMPDataSupplier::startStopNucleus(bool flg)
 		printf("\n\r PMD demo: Loading rpmsg_user_dev_driver\r\n");
 		system("modprobe rpmsg_user_dev_driver");
 
-		sleep(1);
+		sleep(2);
 		do
 		{
 			printf("\nSend start msg to remote");
