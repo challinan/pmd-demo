@@ -229,6 +229,7 @@ void MainWindow::on_pbtn_StartStop_clicked(bool checked)
 
     if(checked)
     {
+		qDebug("MainWindow::on_pbtn_StartStop_clicked button pushed - %d\n", checked);
         m_isStart=false;
         m_timerDataValues->stop();
         ui->pbtn_StartStop->setText("Start");
@@ -237,6 +238,7 @@ void MainWindow::on_pbtn_StartStop_clicked(bool checked)
     }
     else
     {
+		qDebug("MainWindow::on_pbtn_StartStop_clicked button pushed - %d\n", checked);
         m_isStart=true;
         ui->pbtn_StartStop->setText("Stop");
         m_timerDataValues->start();
