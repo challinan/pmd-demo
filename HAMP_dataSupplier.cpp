@@ -86,6 +86,7 @@ void HAMPDataSupplier::startStopNucleus(bool flg)
 		do
 		{
 			printf("\nSend start msg to remote");
+			sleep(1);
 			fd = open("/dev/rpmsg", O_RDWR);
 			i++;
 			if (i > 100000)
