@@ -12,7 +12,6 @@ MainWindow::MainWindow(QWidget *parent) :
 #ifdef PMD_HAMP
     ui->pbtn_StartStop->setChecked(true);
 #endif
-	printf("This is MainWindow\n");
 	qDebug("This is MainWindow via QDebug()\n");
 
     m_alarmBtnNormalStyleSheet=ui->pbtn_ECG_Alarm->styleSheet();
@@ -512,8 +511,10 @@ void  MainWindow::takeScreenSnapshort()
     QRect r= this->rect();
     QPixmap pixmap=this->grab(r);
     QString fileName = m_hampdataSupplier->getScreenShortPath();
+	QByteArray tmp_ba = fileName.toLatin1();
+	const char *tmp_mystr = tmp_ba.data();
 
-	qDebug("MainWindow::takeScreenSnapshort - fileName %s\n", fileName);
+	qDebug("MainWindow::takeScreenSnapshort - fileName %s\n", tmp_mystr);
 
     if(pixmap.isNull()==false)
         pixmap.save(fileName,"PNG");
