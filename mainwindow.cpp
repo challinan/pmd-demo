@@ -71,6 +71,7 @@ MainWindow::MainWindow(QWidget *parent) :
 #endif
 
 #ifdef PMD_HAMP
+	printf("Creating HAMPDataSupplier\n");
     m_hampdataSupplier =new HAMPDataSupplier(this);
     m_cstatus=true;
 
