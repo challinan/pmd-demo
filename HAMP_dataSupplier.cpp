@@ -52,7 +52,7 @@ void HAMPDataSupplier::updateData()
 }
 
 /* Shutdown message ID */
-#define STARTUP_MSG		0xEF56A559
+#define STARTUP_MSG	0xEF56A559
 #define SHUTDOWN_MSG	0xEF56A55A
 
 void HAMPDataSupplier::startStopNucleus(bool flg)
@@ -63,26 +63,32 @@ void HAMPDataSupplier::startStopNucleus(bool flg)
 	int bytes_rcvd;
 	int i=0;
 
-    printf("\nNucleus is %s",flg==true?"started":"stopped");
+    	printf("\nNucleus is %s",flg==true?"started":"stopped");
 
 	if(flg ==true)
 	{
 		/*system("modprobe -r virtio_rpmsg_bus");
-		system("modprobe -r zynq_rpmsg_driver");
-		printf("\nLoading zynq rpmsg driver");
-		system("modprobe zynq_rpmsg_driver");*/
-
+		system("modprobe -r imx6sx_rpmsg_driver");
+		printf("\nLoading imx6sx rpmsg driver");
+		system("modprobe imx6sx_rpmsg_driver");*/
+#if 0
 		printf("\nLoading rpmsg user device driver");
 		system("modprobe rpmsg_user_dev_driver");
-
-		printf("\nStarting patient monitoring app on core 0\n");
+#endif
+		printf("\n\r PMD demo: Starting patient monitoring app on Cortex M4\r\n");
+		printf("\n\r PMD demo: Loading virtio_rpmsg_bus\r\n");
+		system("modprobe virtio_rpmsg_bus");
+		printf("\n\r PMD demo: Loading imx6sx_remoteproc\r\n");
+		system("modprobe imx6sx_remoteproc");
+		printf("\n\r PMD demo: Loading rpmsg_user_dev_driver\r\n");
+		system("modprobe rpmsg_user_dev_driver");
 
 		do
 		{
 			printf("\nSend start msg to remote");
 			fd = open("/dev/rpmsg", O_RDWR);
 			i++;
-			if (1 > 100000)
+			if (i > 100000)
 				break;
 		} while(fd < 0);
 
@@ -94,7 +100,7 @@ void HAMPDataSupplier::startStopNucleus(bool flg)
 		write(fd, &startup_msg , sizeof(int));
 		disTimer->stop();
 		timer->start();
- 	    emit connectionStatus(true);
+ 	    	emit connectionStatus(true);
 
 
 	}
@@ -104,15 +110,16 @@ void HAMPDataSupplier::startStopNucleus(bool flg)
 		timer->stop();
 		write(fd, &shutdown_msg , sizeof(int));
 		close(fd);
-	    disTimer->start(50);
-	    pm_data.abpValue=0;
-	    pm_data.ecgValue =0;
-	    pm_data.plethValue=0;
-	    emit connectionStatus(false);
-//		printf("\nUnload rpmsg_user_device driver, virtio_rpmsg_bus driver, zynq_rpmsg_driver driver");
-//		system("modprobe -r rpmsg_user_dev_driver");
-//		system("modprobe -r virtio_rpmsg_bus");
-//		system("modprobe -r zynq_rpmsg_driver");
+	    	disTimer->start(50);
+	    	pm_data.abpValue=0;
+	    	pm_data.ecgValue =0;
+	    	pm_data.plethValue=0;
+	    	emit connectionStatus(false);
+		printf("\nUnload rpmsg_user_device driver, virtio_rpmsg_bus driver, imx6sx_rpmsg_driver driver");
+		system("modprobe -r rpmsg_user_dev_driver");
+		system("modprobe -r imx6sx_remoteproc");		
+		system("modprobe -r virtio_rpmsg_bus");
+		
 	}
 }
 
