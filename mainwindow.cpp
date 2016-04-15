@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->pbtn_StartStop->setChecked(true);
 #endif
 	printf("This is MainWindow\n");
+	qDebug("This is MainWindow via QDebug()\n");
 
     m_alarmBtnNormalStyleSheet=ui->pbtn_ECG_Alarm->styleSheet();
     m_alarmBtnRedStyleSheet= "*{border: 0px;background-image: url(:/images/icnBellRed.png);} *:checked{background-image:url();}";
