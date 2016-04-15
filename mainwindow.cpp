@@ -513,12 +513,12 @@ void  MainWindow::takeScreenSnapshort()
     QPixmap pixmap=this->grab(r);
     QString fileName = m_hampdataSupplier->getScreenShortPath();
 
-	qDebug("MainWindow::takeScreenSnapshort()\n");
+	qDebug("MainWindow::takeScreenSnapshort - fileName %s\n", fileName);
 
     if(pixmap.isNull()==false)
         pixmap.save(fileName,"PNG");
     else
-        printf("\npixmap is NULL");
+        printf("pixmap is NULL\n");
 }
 
 #endif
