@@ -82,10 +82,10 @@ void HAMPDataSupplier::startStopNucleus(bool flg)
 		printf("PMD demo: Loading rpmsg_user_dev_driver\n");
 		system("modprobe rpmsg_user_dev_driver");
 
-		sleep(2);
+		sleep(1);
 		do
 		{
-			printf("Send start msg to remote\n");
+			printf("Open rpmsg device file\n");
 			fd = open("/dev/rpmsg", O_RDWR);
 			i++;
 			if (i > 10)
@@ -95,7 +95,7 @@ void HAMPDataSupplier::startStopNucleus(bool flg)
 
 		if(fd < 0) {
 			printf("Failed to open file: no rpmsg device - exiting\n");
-			exit(1);
+			goto bailout;
 		}
 
 		/* Send start message to remote */
@@ -125,6 +125,7 @@ void HAMPDataSupplier::startStopNucleus(bool flg)
 	   	pm_data.plethValue=0;
 	   	emit connectionStatus(false);
 
+bailout:
 		printf("Unloading drivers\n"); 
 		system("modprobe -r rpmsg_user_dev_driver");
 		system("modprobe -r imx6sx_remoteproc");		
