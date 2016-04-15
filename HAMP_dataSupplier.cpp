@@ -46,7 +46,12 @@ void HAMPDataSupplier::updateData()
 {
     int read_bytes=0;
 
+	qDebug("HAMPDataSupplier::updateData entered\n");
 	read_bytes = read(fd, &pm_data,sizeof(pm_data_struct));
+	if ( read_bytes == -1 ) {
+		qDebug("HAMPDataSupplier::updateData: read failed %d\n, read_bytes");
+	}
+	qDebug("HAMPDataSupplier::updateData read %d bytes", read_bytes);
 
     emit dataReceived(&pm_data);
 }
@@ -61,7 +66,7 @@ void HAMPDataSupplier::startStopNucleus(bool flg)
 	int startup_msg = STARTUP_MSG;
 	int shutdown_msg = SHUTDOWN_MSG;
 	int bytes_rcvd;
-	int i=0;
+	int i=0, rc;
 
     	printf("\nNucleus is %s",flg==true?"started":"stopped");
 
@@ -83,10 +88,10 @@ void HAMPDataSupplier::startStopNucleus(bool flg)
 		printf("\n\r PMD demo: Loading rpmsg_user_dev_driver\r\n");
 		system("modprobe rpmsg_user_dev_driver");
 
+		sleep(1);
 		do
 		{
 			printf("\nSend start msg to remote");
-			sleep(1);
 			fd = open("/dev/rpmsg", O_RDWR);
 			i++;
 			if (i > 100000)
@@ -97,13 +102,15 @@ void HAMPDataSupplier::startStopNucleus(bool flg)
 			printf("Failed to open file \r\n");
 
 		/* Send start message to remote */
-		printf("\nSend start msg to remote");
-		write(fd, &startup_msg , sizeof(int));
+		printf("\nSend start msg to remote\n");
+		rc = write(fd, &startup_msg , sizeof(int));
+		if ( rc == -1 ) {
+			qDebug("Error writing rpmsg\n");
+		}
+		/* Check error code TODO */
 		disTimer->stop();
 		timer->start();
  	    	emit connectionStatus(true);
-
-
 	}
 	else
 	{
