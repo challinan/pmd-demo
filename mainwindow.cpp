@@ -332,6 +332,7 @@ void MainWindow::on_pbtn_ABP_Alarm_clicked(bool checked)
 
 void MainWindow::dataReceived(pm_data_struct *current)
 {
+	qDebug("MainWindow::dataReceived: Entered\n");
 	if (m_isPauseAll==false)
     {
 		switch(m_graphWidget1->getGraphType())

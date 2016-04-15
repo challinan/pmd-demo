@@ -30,7 +30,7 @@ HAMPDataSupplier::HAMPDataSupplier(QObject* parent): QObject(parent)
 
      disTimer = new QTimer(this);
      connect(disTimer, SIGNAL(timeout()), this, SLOT(updateTimer()));
-     disTimer->setInterval(50);
+     disTimer->setInterval(500);
      //disTimer->stop();
      m_screenShortPath=QDir::rootPath() + tr("guest1_rootfs/www/pages/screen-dump.png");
 }
@@ -91,23 +91,24 @@ void HAMPDataSupplier::startStopNucleus(bool flg)
 		sleep(5);
 		do
 		{
-			printf("\nSend start msg to remote");
+			printf("Send start msg to remote\n");
 			fd = open("/dev/rpmsg", O_RDWR);
 			i++;
-			if (i > 100000)
+			if (i > 10)
 				break;
-		} while(fd < 0);
+			sleep(1);
+		} while (fd < 0);
 
 		if(fd < 0)
 			printf("Failed to open file \r\n");
 
 		/* Send start message to remote */
-		printf("\nSend start msg to remote\n");
+		printf("Send start msg to remote\n");
 		rc = write(fd, &startup_msg , sizeof(int));
 		if ( rc == -1 ) {
 			qDebug("Error writing rpmsg\n");
 		}
-		/* Check error code TODO */
+		qDebug("HAMPDataSupplier::startStopNucleus: Sent %d bytes\n", rc);
 		disTimer->stop();
 		timer->start();
  	    	emit connectionStatus(true);
@@ -135,6 +136,7 @@ void HAMPDataSupplier::startStopNucleus(bool flg)
 
 void HAMPDataSupplier::updateTimer()
 {
+	qDebug("HAMPDataSupplier::updateTimer: Entered - pm_data.index = %d\n", pm_data.index);
 	pm_data.index++;
     emit dataReceived(&pm_data);
 }
