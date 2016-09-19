@@ -8,11 +8,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+	printf("MainWindow::MainWindow() entered as %p\n", this);
 
 #ifdef PMD_HAMP
     ui->pbtn_StartStop->setChecked(true);
 #endif
-	qDebug("This is MainWindow via QDebug()\n");
 
     m_alarmBtnNormalStyleSheet=ui->pbtn_ECG_Alarm->styleSheet();
     m_alarmBtnRedStyleSheet= "*{border: 0px;background-image: url(:/images/icnBellRed.png);} *:checked{background-image:url();}";
@@ -72,7 +72,6 @@ MainWindow::MainWindow(QWidget *parent) :
 #endif
 
 #ifdef PMD_HAMP
-	printf("Creating HAMPDataSupplier\n");
     m_hampdataSupplier =new HAMPDataSupplier(this);
     m_cstatus=true;
 
@@ -228,7 +227,6 @@ void MainWindow::on_pbtn_StartStop_clicked(bool checked)
 
     if(checked)
     {
-		qDebug("MainWindow::on_pbtn_StartStop_clicked button pushed - %d\n", checked);
         m_isStart=false;
         m_timerDataValues->stop();
         ui->pbtn_StartStop->setText("Start");
@@ -237,7 +235,6 @@ void MainWindow::on_pbtn_StartStop_clicked(bool checked)
     }
     else
     {
-		qDebug("MainWindow::on_pbtn_StartStop_clicked button pushed - %d\n", checked);
         m_isStart=true;
         ui->pbtn_StartStop->setText("Stop");
         m_timerDataValues->start();
@@ -252,16 +249,18 @@ void MainWindow::on_pbtn_StartStop_clicked(bool checked)
     {
         m_isStart=false;
         this->m_graphWidget1->clearWidget();
-#ifndef ONLY_SHOW_ECG_GRAPH
-        this->m_graphWidget2->clearWidget();
-        this->m_graphWidget3->clearWidget();
-#endif
         ui->pbtn_StartStop->setText("Start");
+#ifdef PMD_REMOTE
+		m_dataSupplier = new RemoteDataSupplier(this);
+#endif
     }
     else
     {
         m_isStart=true;
         ui->pbtn_StartStop->setText("Stop");
+#ifdef PMD_REMOTE
+		delete m_dataSupplier;
+#endif
     }
 
 #endif
@@ -329,9 +328,8 @@ void MainWindow::on_pbtn_ABP_Alarm_clicked(bool checked)
     (void)checked;
 }
 
-void MainWindow::dataReceived(pm_data_struct *current)
+void MainWindow::dataReceivedSlot(pm_data_struct *current)
 {
-	qDebug("MainWindow::dataReceived: Entered\n");
 	if (m_isPauseAll==false)
     {
 		switch(m_graphWidget1->getGraphType())
@@ -515,7 +513,7 @@ void  MainWindow::takeScreenSnapshort()
     if(pixmap.isNull()==false)
         pixmap.save(fileName,"PNG");
     else
-        printf("pixmap is NULL\n");
+        printf("\npixmap is NULL");
 }
 
 #endif

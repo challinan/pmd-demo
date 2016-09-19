@@ -29,7 +29,7 @@ UI_DIR      = $$DESTDIR/.ui
 #       PMD_NUCLEUS
 #       PMD_MEHV
 #       PMD_HAMP
-DEFINES += PMD_HAMP
+DEFINES += PMD_REMOTE
 
 #   - The demo can be used with one of the design size
 #       DESIGN_SIZE_XGA
@@ -52,7 +52,7 @@ DEFINES += DESIGN_SIZE_720p
 #
 ##########################################
 
-contains(DEFINES,PMD_MEHV|PMD_HAMP) {
+contains(DEFINES,PMD_MEHV|PMD_HAMP|PMD_REMOTE) {
     QT += network
 }
 
@@ -93,6 +93,10 @@ contains(DEFINES, PMD_HAMP) {
     HEADERS     +=  HAMP_dataSupplier.h
 }
 
+contains(DEFINES, PMD_REMOTE) {
+    SOURCES     +=  remote_datasupplier.cpp
+	HEADERS     +=  remote_datasupplier.h
+}
 
 contains(DEFINES, DESIGN_SIZE_XGA) {
   #  FORMS       += XGA/mainwindow.ui
@@ -108,7 +112,7 @@ contains(DEFINES, DESIGN_SIZE_720p) {
     }
 }
 
-contains(DEFINES, PMD_HAMP) {
+contains(DEFINES, PMD_HAMP|PMD_REMOTE) {
 
 target.path=$$[QT_INSTALL_EXAMPLES]/HAMPDemo/PatientMonitorDemo
 INSTALLS +=target

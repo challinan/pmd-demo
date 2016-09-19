@@ -19,6 +19,10 @@
     #include "HAMP_dataSupplier.h"
 #endif
 
+#ifdef PMD_REMOTE
+	#include "remote_datasupplier.h"
+#endif
+
 namespace Ui {
 class MainWindow;
 }
@@ -53,7 +57,7 @@ private slots:
     void on_pbtn_spo2_Alarm_clicked(bool checked);
     void on_pbtn_ABP_Alarm_clicked(bool checked);
 
-    void dataReceived(pm_data_struct* current);
+    void dataReceivedSlot(pm_data_struct* current);
 
     void onGraphMenuPopupOk();
     void launchGraphMenuPopup(Widget *widget);
@@ -111,6 +115,9 @@ private:
 
 #ifdef PMD_HAMP
     HAMPDataSupplier *m_hampdataSupplier;
+#endif
+#ifdef PMD_REMOTE
+	RemoteDataSupplier *m_dataSupplier;
 #endif
 
 };
