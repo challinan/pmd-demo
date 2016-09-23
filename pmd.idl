@@ -1,0 +1,8 @@
+module DataBus {
+
+struct pm_data_struct {
+    long ecgValue;
+    long abpValue;
+    long plethValue;
+    };
+};

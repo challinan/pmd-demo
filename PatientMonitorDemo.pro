@@ -29,7 +29,7 @@ UI_DIR      = $$DESTDIR/.ui
 #       PMD_NUCLEUS
 #       PMD_MEHV
 #       PMD_HAMP
-DEFINES += PMD_REMOTE
+DEFINES += PMD_DDS
 
 #   - The demo can be used with one of the design size
 #       DESIGN_SIZE_XGA
@@ -61,9 +61,7 @@ SOURCES +=  main.cpp\
             mainwindow.cpp \
             widget.cpp \
             helper.cpp \
-            graphSettingsPopup.cpp \
-
-
+            graphSettingsPopup.cpp
 
 HEADERS  += mainwindow.h \
             widget.h \
@@ -96,6 +94,12 @@ contains(DEFINES, PMD_HAMP) {
 contains(DEFINES, PMD_REMOTE) {
     SOURCES     +=  remote_datasupplier.cpp
 	HEADERS     +=  remote_datasupplier.h
+}
+
+contains(DEFINES, PMD_DDS) {
+    SOURCES     += dds_datasupplier.cpp pmd.cpp  pmdPlugin.cpp \
+  				   pmd_subscriber.cpp  pmdSupport.cpp
+    HEADERS     += dds_datasupplier.h pmd.h pmdPlugin.h pmdSupport.h
 }
 
 contains(DEFINES, DESIGN_SIZE_XGA) {
