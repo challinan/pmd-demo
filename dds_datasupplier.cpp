@@ -10,7 +10,15 @@
 
 using namespace DDS;
 
+pm_data_struct pm;
+
 namespace DataBus {
+
+#if 0
+	pm_data_structListener::pm_data_structListener(DDSDataSupplier *parent) {
+		dds_parent = parent;
+	}
+#endif
 
 	void pm_data_structListener::on_data_available(DataReader* reader)
 	{
@@ -18,7 +26,6 @@ namespace DataBus {
 		DataBus::pm_data_structSeq data_seq;
 		SampleInfoSeq info_seq;
 		ReturnCode_t retcode;
-		pm_data_struct pm;
 		int i;
 
 		pm_data_struct_reader = DataBus::pm_data_structDataReader::narrow(reader);
@@ -40,11 +47,14 @@ namespace DataBus {
 
         for (i = 0; i < data_seq.length(); ++i) {
             if (info_seq[i].valid_data) {
-                printf("Received data\n");
-                DataBus::pm_data_structTypeSupport::print_data(&data_seq[i]);
+				pm.ecgValue = data_seq[i].ecgValue;
+				pm.abpValue = data_seq[i].abpValue;
+				pm.plethValue = data_seq[i].plethValue;
+                // printf("Received data - %d\n", i);
+                // DataBus::pm_data_structTypeSupport::print_data(&data_seq[i]);
+				dds_parent->dataReady(&pm);
             }
         }
-		pm.ecgValue = data_seq->ecgValue;
 
         retcode = pm_data_struct_reader->return_loan(data_seq, info_seq);
         if (retcode != RETCODE_OK) {
@@ -117,7 +127,7 @@ DDSDataSupplier::DDSDataSupplier(QObject* parent): QObject(parent)
     }
 
     /* Create a data reader listener */
-    reader_listener = new DataBus::pm_data_structListener();
+    reader_listener = new DataBus::pm_data_structListener(this);
 
     /* To customize the data reader QoS, use 
     the configuration file USER_QOS_PROFILES.xml */
@@ -140,7 +150,12 @@ DDSDataSupplier::~DDSDataSupplier()
 }
 
 void DDSDataSupplier::readData() {
-	emit dataReceivedSig(&pm_data);
+}
+
+void DDSDataSupplier::dataReady(pm_data_struct *pm)
+{
+	// Pass the data to the UI for display
+	emit DDSDataSupplier::dataReceivedSig(pm);	
 }
 
 unsigned int DDSDataSupplier::getECGData()

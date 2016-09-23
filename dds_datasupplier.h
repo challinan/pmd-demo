@@ -18,10 +18,14 @@ typedef struct {
 } pm_data_struct;
 
 // Need a forward declaration here
+class DDSDataSupplier;
+
 namespace DataBus {
 
     class pm_data_structListener : public DataReaderListener {
       public:
+        pm_data_structListener() : DataReaderListener() {}
+        pm_data_structListener(DDSDataSupplier *parent) : DataReaderListener() {dds_parent = parent;}
         virtual void on_requested_deadline_missed(
             DataReader* /*reader*/,
             const RequestedDeadlineMissedStatus& /*status*/) {}
@@ -47,6 +51,8 @@ namespace DataBus {
             const SubscriptionMatchedStatus& /*status*/) {}
 
         virtual void on_data_available(DataReader* reader);
+	private:
+		DDSDataSupplier *dds_parent;
 	};
 }
 
@@ -67,6 +73,9 @@ public slots:
 
 signals:
     void dataReceivedSig(pm_data_struct *);
+
+public:
+	void dataReady(pm_data_struct *);
 
 private:
     unsigned int getECGData();
