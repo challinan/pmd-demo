@@ -6,6 +6,7 @@
 #include "helper.h"
 #include "widget.h"
 #include "data.h"
+#include "dds_datasupplier.h"
 
 #ifdef PMD_MEHV
     #include "MEHV_dataSupplier.h"
@@ -21,6 +22,10 @@
 
 #ifdef PMD_REMOTE
 	#include "remote_datasupplier.h"
+#endif
+
+#ifdef PMD_DDS
+    #include "dds_datasupplier.h"
 #endif
 
 namespace Ui {
@@ -118,6 +123,10 @@ private:
 #endif
 #ifdef PMD_REMOTE
 	RemoteDataSupplier *m_dataSupplier;
+#endif
+
+#ifdef PMD_DDS
+	DDSDataSupplier *m_ddsdataSupplier;
 #endif
 
 };

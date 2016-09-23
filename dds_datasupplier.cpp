@@ -1,4 +1,3 @@
-#include "dds_datasupplier.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -7,16 +6,58 @@
 #include <fcntl.h>
 #include <pthread.h>
 #include <string.h>
+#include "dds_datasupplier.h"
 
-using namespace std;
+using namespace DDS;
 
-int fd;
+namespace DataBus {
+
+	void pm_data_structListener::on_data_available(DataReader* reader)
+	{
+		DataBus::pm_data_structDataReader *pm_data_struct_reader = NULL;
+		DataBus::pm_data_structSeq data_seq;
+		SampleInfoSeq info_seq;
+		ReturnCode_t retcode;
+		pm_data_struct pm;
+		int i;
+
+		pm_data_struct_reader = DataBus::pm_data_structDataReader::narrow(reader);
+        if (pm_data_struct_reader == NULL) {
+            printf("DataReader narrow error\n");
+            return;
+        }
+
+        retcode = pm_data_struct_reader->take(
+            data_seq, info_seq, LENGTH_UNLIMITED,
+            ANY_SAMPLE_STATE, ANY_VIEW_STATE, ANY_INSTANCE_STATE);
+
+        if (retcode == RETCODE_NO_DATA) {
+            return;
+        } else if (retcode != RETCODE_OK) {
+            printf("take error %d\n", retcode);
+            return;
+        }
+
+        for (i = 0; i < data_seq.length(); ++i) {
+            if (info_seq[i].valid_data) {
+                printf("Received data\n");
+                DataBus::pm_data_structTypeSupport::print_data(&data_seq[i]);
+            }
+        }
+		pm.ecgValue = data_seq->ecgValue;
+
+        retcode = pm_data_struct_reader->return_loan(data_seq, info_seq);
+        if (retcode != RETCODE_OK) {
+            printf("return loan error %d\n", retcode);
+        }
+    }
+
+}
 
 DDSDataSupplier::DDSDataSupplier(QObject* parent): QObject(parent)
 {
 	printf("DDSDataSupplier::DDSDataSupplier() entered - parent %p\n", parent);
 
-	// connect(client, SIGNAL(readyRead()), this, SLOT(readData()));
 	connect(this, SIGNAL(dataReceivedSig(pm_data_struct *)), parent, SLOT(dataReceivedSlot(pm_data_struct *)));
 
 	// Initialize DDS
@@ -28,9 +69,11 @@ DDSDataSupplier::DDSDataSupplier(QObject* parent): QObject(parent)
     type_name = NULL;
     count = 0;
     status = 0;	
+	domainId = 0;
 
 	/* To customize the participant QoS, use 
     the configuration file USER_QOS_PROFILES.xml */
+	printf("DDSDataSupplier::DDSDataSupplier() calling create_participant - domainId = %d\n", domainId);
     participant = TheParticipantFactory->create_participant(
         domainId, PARTICIPANT_QOS_DEFAULT,
         NULL /* listener */, STATUS_MASK_NONE);
@@ -42,6 +85,7 @@ DDSDataSupplier::DDSDataSupplier(QObject* parent): QObject(parent)
     
 	/* To customize the subscriber QoS, use 
     the configuration file USER_QOS_PROFILES.xml */
+	printf("DDSDataSupplier::DDSDataSupplier(): calling create_subscriber\n");
     subscriber = participant->create_subscriber(
         SUBSCRIBER_QOS_DEFAULT, NULL /* listener */, STATUS_MASK_NONE);
     if (subscriber == NULL) {
@@ -99,7 +143,7 @@ void DDSDataSupplier::readData() {
 	emit dataReceivedSig(&pm_data);
 }
 
-unsigned int DDSDataSupplier::getECGata()
+unsigned int DDSDataSupplier::getECGData()
 {
     if (ecgIndex == ecgData.count()-1)
         ecgIndex = -1;
@@ -126,7 +170,7 @@ unsigned int DDSDataSupplier::getPlethData()
     return plethData[plethIndex];
 }
 
-DDSDataSupplier::subscriber_shutdown(DomainParticipant *participant) {
+int DDSDataSupplier::subscriber_shutdown(DomainParticipant *participant) {
 
     ReturnCode_t retcode;
     int status = 0;

@@ -8,8 +8,11 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = PatientMonitorDemo
+TARGET = pmd-dds
 TEMPLATE = app
+
+INCLUDEPATH += $(NDDSHOME)/include
+INCLUDEPATH += $(NDDSHOME)/include/ndds
 
 DESTDIR     = Release
 OBJECTS_DIR = $$DESTDIR/.obj
@@ -25,16 +28,18 @@ UI_DIR      = $$DESTDIR/.ui
 #        PMD_MEHV = Patient Monitor Demo with MEHV on OMAP5
 #        PMD_NUCLEUS= Patient Monitor Demo with Nucleus(GPU) on imx6 Saber lite with LVDS
 #
-#   - Select appropriate OS
+#   - Select appropriate Configuration
 #       PMD_NUCLEUS
 #       PMD_MEHV
 #       PMD_HAMP
+#		PMD_DDS
+#		PMD_REMOTE
 DEFINES += PMD_DDS
 
 #   - The demo can be used with one of the design size
 #       DESIGN_SIZE_XGA
 #       DESIGN_SIZE_720p
-DEFINES += DESIGN_SIZE_720p
+DEFINES += DESIGN_SIZE_XGA
 
 #   - Un-comment following to enable graph scrolling on demo startup
 #DEFINES += ENABLE_GRAPH_SCROLLING
@@ -97,14 +102,15 @@ contains(DEFINES, PMD_REMOTE) {
 }
 
 contains(DEFINES, PMD_DDS) {
-    SOURCES     += dds_datasupplier.cpp pmd.cpp  pmdPlugin.cpp \
-  				   pmd_subscriber.cpp  pmdSupport.cpp
+    SOURCES     += dds_datasupplier.cpp pmd.cpp  \
+				   pmdPlugin.cpp \
+  				   pmdSupport.cpp
     HEADERS     += dds_datasupplier.h pmd.h pmdPlugin.h pmdSupport.h
 }
 
 contains(DEFINES, DESIGN_SIZE_XGA) {
-  #  FORMS       += XGA/mainwindow.ui
-  #  RESOURCES   += XGA/images.qrc
+	FORMS       += XGA/mainwindow.ui
+	RESOURCES   += XGA/images.qrc
 }
 
 contains(DEFINES, DESIGN_SIZE_720p) {
@@ -118,8 +124,11 @@ contains(DEFINES, DESIGN_SIZE_720p) {
 
 contains(DEFINES, PMD_HAMP|PMD_REMOTE) {
 
-target.path=$$[QT_INSTALL_EXAMPLES]/HAMPDemo/PatientMonitorDemo
+target.path=$$[QT_INSTALL_EXAMPLES]/HAMPDemo/pmd-dds
 INSTALLS +=target
 }
 
+DEFINES += RTI_UNIX RTI_LINUX RTI_64BIT
 
+LIBS += -L$(NDDSHOME)/lib/$(DDS_ARCH)
+LIBS += -lnddscppz -lnddscz -lnddscorez -ldl -lnsl -lm -lpthread -lrt

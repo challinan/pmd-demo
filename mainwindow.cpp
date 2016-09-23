@@ -253,6 +253,13 @@ void MainWindow::on_pbtn_StartStop_clicked(bool checked)
 #ifdef PMD_REMOTE
 		m_dataSupplier = new RemoteDataSupplier(this);
 #endif
+#ifdef PMD_DDS
+    	m_ddsdataSupplier = new DDSDataSupplier(this);
+    	if ( m_ddsdataSupplier == NULL ) {
+        	printf("MainWindow::on_pbtn_StartStop_clicked: create DDSDataSupplier failed\n");
+        	exit(1);
+    	}
+#endif
     }
     else
     {
@@ -260,6 +267,9 @@ void MainWindow::on_pbtn_StartStop_clicked(bool checked)
         ui->pbtn_StartStop->setText("Stop");
 #ifdef PMD_REMOTE
 		delete m_dataSupplier;
+#endif
+#ifdef PMD_DDS
+		delete m_ddsdataSupplier;
 #endif
     }
 
