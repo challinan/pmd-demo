@@ -269,6 +269,7 @@ void MainWindow::on_pbtn_StartStop_clicked(bool checked)
 		delete m_dataSupplier;
 #endif
 #ifdef PMD_DDS
+		printf("MainWindow::on_pbtn_StartStop_clicked() deleting m_ddsdataSupplier\n");
 		delete m_ddsdataSupplier;
 #endif
     }

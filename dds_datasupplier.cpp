@@ -14,12 +14,6 @@ pm_data_struct pm;
 
 namespace DataBus {
 
-#if 0
-	pm_data_structListener::pm_data_structListener(DDSDataSupplier *parent) {
-		dds_parent = parent;
-	}
-#endif
-
 	void pm_data_structListener::on_data_available(DataReader* reader)
 	{
 		DataBus::pm_data_structDataReader *pm_data_struct_reader = NULL;
@@ -146,7 +140,9 @@ DDSDataSupplier::DDSDataSupplier(QObject* parent): QObject(parent)
 DDSDataSupplier::~DDSDataSupplier()
 {
 	printf("DDSDataSupplier::~DDSDataSupplier() closing\n");
-    // close socket if not already closed
+	// Cleanup
+	delete reader_listener;
+	subscriber_shutdown(participant);
 }
 
 void DDSDataSupplier::readData() {
